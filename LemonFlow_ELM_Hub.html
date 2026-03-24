@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LemonFlow ELM — 6 casos que cambian cómo operás legalmente</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d14;--surface:#13131f;--card:#181826;--border:#2a2a3d;
+  --purple:#7c3aed;--purple-lt:#a78bfa;--purple-dim:rgba(124,58,237,.18);
+  --teal:#2dd4bf;--amber:#f59e0b;--rose:#f43f5e;--green:#10b981;--blue:#3b82f6;
+  --text:#e2e2f0;--muted:#8888aa;--radius:14px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;font-size:15px;line-height:1.6}
+a{color:var(--purple-lt);text-decoration:none}
+nav.hub-nav{position:sticky;top:0;z-index:100;background:rgba(13,13,20,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px}
+nav.hub-nav .inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.3px}
+.logo-icon{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--purple),#c084fc);display:flex;align-items:center;justify-content:center;font-size:15px}
+.logo .lm{color:#facc15}.logo .fl{color:var(--purple-lt)}
+.nav-badge{font-size:11px;font-weight:700;letter-spacing:.5px;padding:3px 10px;border-radius:20px;background:var(--purple-dim);color:var(--purple-lt);border:1px solid var(--purple)}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+.section{padding:72px 0}.section+.section{border-top:1px solid var(--border)}
+.hero{padding:90px 0 72px;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(124,58,237,.2),transparent 70%)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--purple-lt);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:'';width:18px;height:2px;background:var(--purple-lt)}
+.hero h1{font-size:clamp(36px,5vw,58px);font-weight:800;line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--purple-lt),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:18px;color:var(--muted);max-width:600px;margin-bottom:40px;line-height:1.7}
+.hero-sub strong{color:var(--text)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;background:var(--purple);color:#fff;font-weight:700;font-size:14px;border:none;cursor:pointer;transition:opacity .15s;text-decoration:none}
+.btn-primary:hover{opacity:.85}
+.section-title{font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:12px}
+.section-sub{font-size:17px;color:var(--muted);max-width:580px}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px;margin-top:44px}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,transform .18s,box-shadow .18s;cursor:default}
+.case-card:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 14px 36px rgba(124,58,237,.15)}
+.case-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.case-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:20px}
+.t-purple{background:rgba(124,58,237,.18);color:var(--purple-lt);border:1px solid var(--purple)}
+.t-teal{background:rgba(45,212,191,.1);color:var(--teal);border:1px solid var(--teal)}
+.t-amber{background:rgba(245,158,11,.1);color:var(--amber);border:1px solid var(--amber)}
+.t-green{background:rgba(16,185,129,.1);color:var(--green);border:1px solid var(--green)}
+.t-blue{background:rgba(59,130,246,.1);color:var(--blue);border:1px solid var(--blue)}
+.t-rose{background:rgba(244,63,94,.1);color:var(--rose);border:1px solid var(--rose)}
+.case-title{font-size:18px;font-weight:700;letter-spacing:-.3px}
+.case-tagline{font-size:13px;color:var(--muted);font-style:italic;margin-top:-6px}
+.case-desc{font-size:13px;color:var(--muted);line-height:1.65;flex:1}
+.case-chain{display:flex;align-items:center;gap:4px;background:#0f0f1a;border:1px solid var(--border);border-radius:9px;padding:9px 12px;flex-wrap:wrap}
+.cn{font-size:11px;font-weight:600;color:var(--text);padding:3px 9px;background:var(--card);border-radius:5px;border:1px solid var(--border)}
+.ca{color:var(--muted);font-size:12px;padding:0 1px}
+.case-result{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--green);padding:9px 12px;border-radius:9px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25)}
+.case-result::before{content:'✓';font-weight:800}
+.case-footer{display:flex;justify-content:space-between;align-items:center;padding-top:4px}
+.btn-demo{font-size:12px;font-weight:700;color:var(--purple-lt);background:none;border:1px solid rgba(124,58,237,.3);padding:7px 14px;border-radius:7px;cursor:pointer;transition:all .15s}
+.btn-demo:hover{background:rgba(124,58,237,.15);border-color:var(--purple)}
+.case-milestone{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.moat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:36px}
+.moat-card{padding:22px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius)}
+.moat-icon{font-size:24px;margin-bottom:10px}
+.moat-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.moat-card p{font-size:13px;color:var(--muted)}
+.cta-band{margin:0 0 72px;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(45,212,191,.06));border:1px solid rgba(124,58,237,.3);border-radius:18px;padding:48px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.cta-band h2{font-size:26px;font-weight:800;letter-spacing:-.5px;max-width:480px}
+.cta-band p{font-size:15px;color:var(--muted);margin-top:6px}
+footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color:var(--muted);font-size:12px}
+
+/* ══════════════════════════════════════════════════════
+   TOUR SYSTEM
+══════════════════════════════════════════════════════ */
+.tour-modal{display:none;position:fixed;inset:0;z-index:500;background:#f3f4f6;overflow:hidden}
+.tour-modal.open{display:block}
+.tour-app{position:absolute;inset:0;overflow:auto;background:#f3f4f6}
+.tour-x{position:fixed;top:14px;right:14px;z-index:600;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);color:#374151;border:1px solid #e5e7eb;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.tour-x:hover{background:#fff}
+
+/* 4-piece spotlight overlay */
+.sp{position:fixed;background:rgba(0,0,0,.72);z-index:510;transition:all .35s cubic-bezier(.4,0,.2,1);pointer-events:all}
+.sp-ring{position:fixed;z-index:511;border:2px solid #7c3aed;border-radius:10px;box-shadow:0 0 0 3px rgba(124,58,237,.2),0 0 30px rgba(124,58,237,.3);pointer-events:none;transition:all .35s cubic-bezier(.4,0,.2,1)}
+
+/* Tooltip card */
+.tour-tip{position:fixed;z-index:520;width:360px;background:#fff;border-radius:16px;padding:22px 24px 18px;box-shadow:0 24px 64px rgba(0,0,0,.35);transition:top .35s cubic-bezier(.4,0,.2,1),left .35s cubic-bezier(.4,0,.2,1)}
+.tip-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#7c3aed;margin-bottom:10px}
+.tip-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:#10b981;flex-shrink:0}
+.tip-title{font-size:19px;font-weight:800;color:#111827;line-height:1.25;margin-bottom:10px}
+.tip-body{font-size:13px;color:#6b7280;line-height:1.65;margin-bottom:18px}
+.tip-body strong{color:#111827}
+.tip-body .td{color:#dc2626;font-weight:600}
+.tip-body .tp{color:#7c3aed;font-weight:600}
+.tip-body .tg{color:#16a34a;font-weight:600}
+.tip-nav{display:flex;align-items:center;gap:8px}
+.tip-dots{display:flex;gap:5px;flex:1}
+.tip-dot{width:7px;height:7px;border-radius:50%;background:#e5e7eb;transition:all .2s}
+.tip-dot.active{width:18px;border-radius:4px;background:#7c3aed}
+.tip-dot.done{background:#10b981}
+.tip-skip{font-size:12px;font-weight:600;color:#9ca3af;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0}
+.tip-next{font-size:13px;font-weight:700;color:#fff;background:#7c3aed;border:none;padding:9px 18px;border-radius:8px;cursor:pointer;flex-shrink:0;transition:background .15s}
+.tip-next:hover{background:#6d28d9}
+.tip-done{font-size:13px;font-weight:700;color:#fff;background:#10b981;border:none;padding:9px 18px;border-radius:8px;cursor:pointer;flex-shrink:0}
+
+/* AI Side panel */
+.tour-panel{position:fixed;right:0;top:0;bottom:0;width:400px;background:#fff;z-index:530;transform:translateX(100%);transition:transform .45s cubic-bezier(.25,.46,.45,.94);display:flex;flex-direction:column;box-shadow:-16px 0 48px rgba(0,0,0,.25)}
+.tour-panel.open{transform:translateX(0)}
+.panel-head{padding:18px 20px;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;flex-shrink:0}
+.panel-head-row{display:flex;align-items:center;justify-content:space-between}
+.panel-head-title{font-size:15px;font-weight:800;display:flex;align-items:center;gap:7px}
+.panel-head-sub{font-size:11px;opacity:.75;margin-top:3px}
+.panel-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center}
+.panel-body{flex:1;overflow-y:auto;padding:14px}
+.p-item{border:1px solid #e5e7eb;border-radius:10px;padding:13px 14px;margin-bottom:9px}
+.p-item-h{display:flex;align-items:flex-start;gap:8px;margin-bottom:5px}
+.p-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.d-red{background:#ef4444}.d-amber{background:#f59e0b}.d-green{background:#10b981}.d-blue{background:#3b82f6}
+.p-item-title{font-size:12px;font-weight:700;color:#111827;line-height:1.4}
+.p-item-body{font-size:11px;color:#6b7280;line-height:1.55;margin-left:17px;margin-top:3px}
+.p-item-body strong{color:#dc2626}
+.p-item-body .pg{color:#16a34a;font-weight:600}
+.p-action{display:inline-flex;align-items:center;gap:4px;margin-top:7px;margin-left:17px;font-size:10px;font-weight:700;color:#7c3aed;background:#f5f3ff;border:1px solid #c4b5fd;padding:3px 9px;border-radius:5px;cursor:default}
+.panel-footer{padding:12px 14px;border-top:1px solid #e5e7eb;display:flex;gap:8px;flex-shrink:0}
+.panel-input{flex:1;border:1px solid #e5e7eb;border-radius:8px;padding:8px 12px;font-size:12px;color:#9ca3af;background:#f9fafb;font-family:inherit}
+.panel-send{width:32px;height:32px;border-radius:7px;background:#7c3aed;color:#fff;border:none;cursor:pointer;font-size:14px}
+
+/* ══════════════════════════════════════════════════════
+   LEMONFLOW MOCK UI (inside tours)
+══════════════════════════════════════════════════════ */
+.lf-nav{background:#111827;height:48px;display:flex;align-items:center;padding:0 20px;gap:14px;position:sticky;top:0;z-index:2}
+.lf-nav .lf-logo{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+.lf-nav .lf-logo span{width:22px;height:22px;border-radius:5px;background:linear-gradient(135deg,#7c3aed,#c084fc);display:flex;align-items:center;justify-content:center;font-size:11px}
+.lf-lm{color:#facc15}.lf-fl{color:#a78bfa}
+.lf-ni{font-size:11px;color:#9ca3af;padding:3px 8px;border-radius:5px;cursor:default}
+.lf-ni.on{background:#7c3aed;color:#fff;font-weight:600}
+.lf-sp{flex:1}
+.lf-av{width:26px;height:26px;border-radius:50%;background:#7c3aed;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lf-page{padding:20px 24px;max-width:900px;margin:0 auto}
+.lf-back{font-size:11px;color:#7c3aed;cursor:default;margin-bottom:12px}
+.lf-ptitle{font-size:20px;font-weight:800;color:#111827;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lf-sub{font-size:12px;color:#9ca3af;margin-bottom:16px}
+.lf-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
+.b-green{background:#dcfce7;color:#16a34a}.b-amber{background:#fef3c7;color:#d97706}
+.b-red{background:#fee2e2;color:#dc2626}.b-blue{background:#dbeafe;color:#2563eb}
+.b-gray{background:#f3f4f6;color:#6b7280}.b-purple{background:#ede9fe;color:#7c3aed}
+.b-critco{background:#fee2e2;color:#dc2626;font-weight:700}
+.b-alto{background:#ffedd5;color:#c2410c;font-weight:700}
+.b-medio{background:#fef3c7;color:#d97706;font-weight:700}
+.b-bajo{background:#dcfce7;color:#16a34a;font-weight:700}
+.lf-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px;margin-bottom:12px}
+.lf-card-title{font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.lf-field{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
+.lf-field label{font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.4px}
+.lf-field-val{font-size:13px;color:#111827}
+.lf-row{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.lf-stat{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;flex:1;min-width:120px}
+.lf-stat-n{font-size:28px;font-weight:800;color:#111827}
+.lf-stat-n.red{color:#dc2626}.lf-stat-n.amber{color:#d97706}.lf-stat-n.green{color:#16a34a}
+.lf-stat-l{font-size:11px;color:#9ca3af;margin-top:2px}
+.lf-table{width:100%;border-collapse:collapse;font-size:12px}
+.lf-table th{background:#f9fafb;color:#6b7280;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:8px 10px;text-align:left;border-bottom:1px solid #e5e7eb}
+.lf-table td{padding:9px 10px;border-bottom:1px solid #f3f4f6;color:#374151;vertical-align:middle}
+.lf-table tr:last-child td{border-bottom:none}
+.lf-link{color:#7c3aed;font-weight:600}
+.lf-chip{display:inline-flex;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:600;background:#f3f4f6;color:#374151}
+.lf-ai-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:8px;background:#7c3aed;color:#fff;font-size:12px;font-weight:700;border:none;cursor:default}
+.lf-ai-btn::before{content:'✦ '}
+.lf-warn{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.5;margin-bottom:12px}
+.lf-info{background:#f0fdf4;border:1px solid #86efac;color:#166534;border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.5;margin-bottom:12px}
+.lf-danger{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.5;margin-bottom:12px}
+.norm-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f3f4f6}
+.norm-row:last-child{border-bottom:none}
+.norm-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.nd-r{background:#ef4444}.nd-a{background:#f59e0b}.nd-g{background:#10b981}
+.norm-name{font-size:12px;color:#374151;flex:1}
+.norm-pct{font-size:11px;font-weight:700}
+.npct-r{color:#dc2626}.npct-a{color:#d97706}.npct-g{color:#16a34a}
+</style>
+</head>
+<body>
+
+<nav class="hub-nav">
+  <div class="inner">
+    <div class="logo"><div class="logo-icon">🍋</div><span><span class="lm">Lemon</span><span class="fl">Flow</span></span></div>
+    <span class="nav-badge">ELM — Enterprise Legal Management</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">LemonFlow ELM — 2026</div>
+    <h1>Firmaste el contrato.<br><em>¿Quién se encarga de cumplirlo?</em></h1>
+    <p class="hero-sub">Tu empresa firma acuerdos, publica normas y gestiona riesgos. Pero lo legal y lo operacional <strong>no están conectados</strong>. LemonFlow ELM cierra esa brecha: convierte obligaciones en tareas, normativas en controles y datos dispersos en decisiones claras.</p>
+    <a href="#cases" class="btn-primary">Ver los 6 casos de uso →</a>
+  </div>
+</section>
+
+<section class="section" id="cases">
+  <div class="container">
+    <div class="eyebrow">Casos de uso de alto impacto</div>
+    <h2 class="section-title">6 momentos donde el cumplimiento<br>deja de ser solo burocracia</h2>
+    <p class="section-sub">Cada caso resuelve un problema real que tu equipo enfrenta hoy. Hacé click en "Ver demo" para verlo en acción.</p>
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <div class="case-header"><div class="case-icon" style="background:rgba(124,58,237,.12)">📄</div><div class="tags"><span class="tag t-purple">CLM</span><span class="tag t-teal">Compliance</span></div></div>
+        <div><div class="case-title">El contrato se firma. Las obligaciones, no.</div><div class="case-tagline">"¿Quién trackea lo que acordamos?"</div></div>
+        <p class="case-desc">La IA lee el contrato firmado, extrae cada obligación y la convierte en una tarea asignada dentro de LemonFlow. El contrato deja de ser un PDF y empieza a ejecutarse.</p>
+        <div class="case-chain"><span class="cn">Contrato</span><span class="ca">→</span><span class="cn">IA extrae</span><span class="ca">→</span><span class="cn">Tareas</span><span class="ca">→</span><span class="cn">Asignadas</span></div>
+        <div class="case-result">Cero incumplimientos por obligaciones olvidadas</div>
+        <div class="case-footer"><span class="case-milestone">CLM → Operación</span><button class="btn-demo" onclick="openTour(1)">Ver demo →</button></div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header"><div class="case-icon" style="background:rgba(45,212,191,.1)">🔮</div><div class="tags"><span class="tag t-teal">Compliance</span><span class="tag t-purple">IA</span></div></div>
+        <div><div class="case-title">¿Estamos en riesgo o no?</div><div class="case-tagline">"El dashboard me muestra datos, no respuestas."</div></div>
+        <p class="case-desc">La IA interpreta el estado del sistema en lenguaje claro: por qué una normativa está en rojo, cuáles son las causas reales y qué acción concreta debería tomar el responsable ahora.</p>
+        <div class="case-chain"><span class="cn">Estado</span><span class="ca">→</span><span class="cn">IA interpreta</span><span class="ca">→</span><span class="cn">Diagnóstico</span><span class="ca">→</span><span class="cn">Acción</span></div>
+        <div class="case-result">Tu equipo sabe qué hacer sin consultor externo</div>
+        <div class="case-footer"><span class="case-milestone">Estado → Decisión</span><button class="btn-demo" onclick="openTour(2)">Ver demo →</button></div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header"><div class="case-icon" style="background:rgba(245,158,11,.1)">⚖️</div><div class="tags"><span class="tag t-amber">Normativa</span><span class="tag t-teal">Cross</span></div></div>
+        <div><div class="case-title">Salió una ley nueva. ¿Qué cambia para ti?</div><div class="case-tagline">"¿Mis contratos y políticas siguen vigentes?"</div></div>
+        <p class="case-desc">Cuando entra una nueva normativa, la IA detecta qué contratos necesitan cláusulas nuevas, qué políticas deben actualizarse y qué controles hay que crear.</p>
+        <div class="case-chain"><span class="cn">Nueva ley</span><span class="ca">→</span><span class="cn">IA impacto</span><span class="ca">→</span><span class="cn">Cambios</span><span class="ca">→</span><span class="cn">Ejecutados</span></div>
+        <div class="case-result">La ley baja a la operación sola</div>
+        <div class="case-footer"><span class="case-milestone">Normativa → Sistema</span><button class="btn-demo" onclick="openTour(3)">Ver demo →</button></div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header"><div class="case-icon" style="background:rgba(59,130,246,.1)">🔍</div><div class="tags"><span class="tag t-blue">CLM</span><span class="tag t-rose">Riesgos</span></div></div>
+        <div><div class="case-title">Subí el contrato. La IA encontró 8 riesgos.</div><div class="case-tagline">"Esto lo revisé yo en tres horas."</div></div>
+        <p class="case-desc">Subís un contrato y la IA identifica cláusulas riesgosas, multas y obligaciones ocultas — clasificadas por criticidad. Sin abogado de cabecera en cada revisión.</p>
+        <div class="case-chain"><span class="cn">Contrato PDF</span><span class="ca">→</span><span class="cn">IA analiza</span><span class="ca">→</span><span class="cn">Riesgos</span><span class="ca">→</span><span class="cn">Acción</span></div>
+        <div class="case-result">Revisión legal completa en segundos</div>
+        <div class="case-footer"><span class="case-milestone">CLM → Riesgos</span><button class="btn-demo" onclick="openTour(4)">Ver demo →</button></div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header"><div class="case-icon" style="background:rgba(244,63,94,.1)">⏰</div><div class="tags"><span class="tag t-rose">Agente</span><span class="tag t-amber">Proactivo</span></div></div>
+        <div><div class="case-title">Nada vence sin que lo sepas.</div><div class="case-tagline">"Nos enteramos tarde."</div></div>
+        <p class="case-desc">Un agente de IA monitorea vencimientos en todo el sistema y alerta al responsable antes de que el plazo sea un problema. El sistema actúa sin que nadie lo llame.</p>
+        <div class="case-chain"><span class="cn">Sistema</span><span class="ca">→</span><span class="cn">Agente</span><span class="ca">→</span><span class="cn">Alerta</span><span class="ca">→</span><span class="cn">Acción</span></div>
+        <div class="case-result">El sistema actúa sin que nadie lo llame</div>
+        <div class="case-footer"><span class="case-milestone">Monitoreo proactivo</span><button class="btn-demo" onclick="openTour(5)">Ver demo →</button></div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header"><div class="case-icon" style="background:rgba(16,185,129,.1)">🛡️</div><div class="tags"><span class="tag t-green">Ejecutivo</span><span class="tag t-purple">Cross</span></div></div>
+        <div><div class="case-title">Una vista. Todo el estado legal.</div><div class="case-tagline">"Tengo 4 sistemas y ninguno me da el cuadro."</div></div>
+        <p class="case-desc">La IA construye una vista unificada de contratos críticos, riesgos activos e incidentes — con interpretación, no solo datos. El GC entra y en 2 minutos sabe dónde está parado.</p>
+        <div class="case-chain"><span class="cn">Disperso</span><span class="ca">→</span><span class="cn">IA unifica</span><span class="ca">→</span><span class="cn">Control</span><span class="ca">→</span><span class="cn">Decisión</span></div>
+        <div class="case-result">Visión ejecutiva real sin armar PowerPoints</div>
+        <div class="case-footer"><span class="case-milestone">Estado → Visión</span><button class="btn-demo" onclick="openTour(6)">Ver demo →</button></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Por qué LemonFlow ELM</div>
+    <h2 class="section-title">Un SaaS típico organiza. El ELM ejecuta.</h2>
+    <div class="moat-grid">
+      <div class="moat-card"><div class="moat-icon">🔗</div><h3>Lo que firmás, se ejecuta</h3><p>Un contrato genera tareas con dueños y fechas. Una normativa genera controles activos. El documento legal deja de ser archivo muerto.</p></div>
+      <div class="moat-card"><div class="moat-icon">🧠</div><h3>IA que interpreta, no que muestra</h3><p>No es un dashboard más. La IA entiende por qué estás en rojo, qué causas lo generan y qué acción concreta resuelve el problema.</p></div>
+      <div class="moat-card"><div class="moat-icon">✅</div><h3>El usuario decide siempre</h3><p>La IA propone, el usuario acepta o descarta. Cada recomendación es transparente — sin cajas negras ni automatizaciones ciegas.</p></div>
+      <div class="moat-card"><div class="moat-icon">📁</div><h3>Evidencia que nace con el flujo</h3><p>No se genera evidencia a posteriori para una auditoría. Nace con cada acción, cada tarea completada, cada control cerrado.</p></div>
+      <div class="moat-card"><div class="moat-icon">⚡</div><h3>Operativo en 48 horas</h3><p>Primeras normativas, controles activos y tareas asignadas antes del segundo día. Sin meses de implementación.</p></div>
+      <div class="moat-card"><div class="moat-icon">🌎</div><h3>Hecho para LATAM</h3><p>Ley 21.719, CMF, Supersalud, normativas de México y Colombia. Diseñado desde el inicio para la realidad regulatoria de la región.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="cta-band">
+    <div><h2>¿Cuántas obligaciones contractuales tiene tu empresa sin trackear hoy?</h2><p>Demo personalizado según tu industria y regulación. 45 minutos.</p></div>
+    <a href="mailto:ventas@lemontech.com" class="btn-primary">Agendar demo →</a>
+  </div>
+</div>
+<footer><div class="container"><p>🍋 <strong>LemonFlow</strong> — Lemontech © 2026 · Enterprise Legal Management para LATAM</p></div></footer>
+
+
+<!-- ════════════════════════════════════════
+  TOUR 1: El contrato se firma, las obligaciones no
+════════════════════════════════════════ -->
+<div class="tour-modal" id="tour1">
+  <button class="tour-x" onclick="closeTour(1)">✕</button>
+  <div class="sp" id="t1-st"></div><div class="sp" id="t1-sl"></div><div class="sp" id="t1-sr"></div><div class="sp" id="t1-sb"></div>
+  <div class="sp-ring" id="t1-ring" style="display:none"></div>
+  <div class="tour-app">
+    <div class="lf-nav">
+      <div class="lf-logo"><span>🍋</span><span class="lf-lm">Lemon</span><span class="lf-fl">Flow</span></div>
+      <span class="lf-ni">Inicio</span><span class="lf-ni on">Contratos</span><span class="lf-ni">Cumplimiento</span><span class="lf-ni">Reportes</span>
+      <div class="lf-sp"></div><div class="lf-av">R</div>
+    </div>
+    <div class="lf-page">
+      <div class="lf-back">← Contratos</div>
+      <div class="lf-ptitle">Acuerdo Marco de Servicios — Retail S.A. <span class="lf-badge b-green">Firmado</span></div>
+      <div class="lf-sub">Firmado: 20/03/2026 (hace 4 días) · Vigencia: 24 meses · Valor: UF 3.400 / año</div>
+      <div class="lf-row">
+        <div id="t1-a" class="lf-card" style="flex:1">
+          <div class="lf-card-title">Detalles del contrato</div>
+          <div class="lf-field"><label>Contraparte</label><div class="lf-field-val">Retail S.A.</div></div>
+          <div class="lf-field"><label>Responsable interno</label><div class="lf-field-val">Carmen López — Legal</div></div>
+          <div class="lf-field"><label>Materias</label><div class="lf-field-val"><span class="lf-chip">Datos</span> <span class="lf-chip">SLA</span> <span class="lf-chip">Reportes</span></div></div>
+        </div>
+        <div id="t1-b" class="lf-card" style="flex:1">
+          <div class="lf-card-title">Estado de ejecución</div>
+          <div class="lf-field"><label>Tareas de ejecución</label><div class="lf-field-val" style="color:#dc2626;font-weight:700">0 tareas ●</div></div>
+          <div class="lf-field"><label>Obligaciones trackeadas</label><div class="lf-field-val" style="color:#9ca3af">No analizadas</div></div>
+          <div class="lf-field"><label>Vencimiento próximo</label><div class="lf-field-val" style="color:#9ca3af">Desconocido</div></div>
+        </div>
+      </div>
+      <div id="t1-c" style="margin-top:4px">
+        <button class="lf-ai-btn">Extraer obligaciones con ELM</button>
+      </div>
+    </div>
+  </div>
+  <div class="tour-panel" id="t1-panel">
+    <div class="panel-head">
+      <div class="panel-head-row"><div class="panel-head-title">✦ ELM · 6 obligaciones encontradas</div><button class="panel-close" onclick="closeTour(1)">✕</button></div>
+      <div class="panel-head-sub">Acuerdo Marco — Retail S.A. · Extraídas automáticamente</div>
+    </div>
+    <div class="panel-body">
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Informe mensual de KPIs</div></div><div class="p-item-body">Cláusula 8.2 · Vence <strong>31/03/2026</strong> · Responsable sugerido: Carmen López</div><div class="p-action">📋 Crear tarea</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Aviso de renovación automática</div></div><div class="p-item-body">Cláusula 14.1 · Vence <strong>20/01/2028</strong> (60 días antes) · Alta criticidad</div><div class="p-action">📋 Crear tarea</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Notificar cambios de equipo clave</div></div><div class="p-item-body">Cláusula 5.3 · Plazo: 10 días hábiles desde cada cambio · RRHH</div><div class="p-action">📋 Crear tarea</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Auditoría de seguridad de datos (anual)</div></div><div class="p-item-body">Cláusula 11.4 · Vence <strong>20/03/2027</strong> · TI + Legal</div><div class="p-action">📋 Crear tarea</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">Certificado de seguros vigentes</div></div><div class="p-item-body">Cláusula 9.1 · Semestral · Próximo: <span class="pg">20/09/2026</span> · Finanzas</div><div class="p-action">📋 Crear tarea</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">Revisión de precios por IPC</div></div><div class="p-item-body">Cláusula 6.2 · Anual · Finanzas</div><div class="p-action">📋 Crear tarea</div></div>
+    </div>
+    <div class="panel-footer"><input class="panel-input" placeholder="Preguntale al ELM sobre este contrato..."/><button class="panel-send">↑</button></div>
+  </div>
+  <div class="tour-tip" id="t1-tip">
+    <div class="tip-badge" id="t1-badge">PASO 1 DE 4</div>
+    <h3 class="tip-title" id="t1-title"></h3>
+    <p class="tip-body" id="t1-body"></p>
+    <div class="tip-nav"><div class="tip-dots" id="t1-dots"></div><button class="tip-skip" onclick="closeTour(1)">Saltar</button><button class="tip-next" id="t1-next" onclick="tourNext(1)">Siguiente →</button></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+  TOUR 2: ¿Estamos en riesgo?
+════════════════════════════════════════ -->
+<div class="tour-modal" id="tour2">
+  <button class="tour-x" onclick="closeTour(2)">✕</button>
+  <div class="sp" id="t2-st"></div><div class="sp" id="t2-sl"></div><div class="sp" id="t2-sr"></div><div class="sp" id="t2-sb"></div>
+  <div class="sp-ring" id="t2-ring" style="display:none"></div>
+  <div class="tour-app">
+    <div class="lf-nav">
+      <div class="lf-logo"><span>🍋</span><span class="lf-lm">Lemon</span><span class="lf-fl">Flow</span></div>
+      <span class="lf-ni">Inicio</span><span class="lf-ni on">Cumplimiento</span><span class="lf-ni">Riesgos</span>
+      <div class="lf-sp"></div><div class="lf-av">R</div>
+    </div>
+    <div class="lf-page">
+      <div class="lf-ptitle">Panel de Cumplimiento — Empresa Chile 2</div>
+      <div class="lf-sub">Actualizado: hoy 09:14 AM</div>
+      <div id="t2-a" class="lf-row">
+        <div class="lf-stat"><div class="lf-stat-n red">3</div><div class="lf-stat-l">Normativas en rojo</div></div>
+        <div class="lf-stat"><div class="lf-stat-n amber">14</div><div class="lf-stat-l">Tareas vencidas</div></div>
+        <div class="lf-stat"><div class="lf-stat-n amber">7</div><div class="lf-stat-l">Riesgos activos</div></div>
+        <div class="lf-stat"><div class="lf-stat-n" style="color:#111">2</div><div class="lf-stat-l">Incidentes abiertos</div></div>
+      </div>
+      <div id="t2-b" class="lf-card">
+        <div class="lf-card-title">Normativas por estado</div>
+        <div class="norm-row"><div class="norm-dot nd-r"></div><div class="norm-name">Ley 21.719 — Protección de Datos</div><div class="norm-pct npct-r">12%</div></div>
+        <div class="norm-row"><div class="norm-dot nd-r"></div><div class="norm-name">ISO 27001 — Seguridad de la Información</div><div class="norm-pct npct-r">8%</div></div>
+        <div class="norm-row"><div class="norm-dot nd-r"></div><div class="norm-name">CMF Circular 3-720</div><div class="norm-pct npct-r">31%</div></div>
+        <div class="norm-row"><div class="norm-dot nd-a"></div><div class="norm-name">Política Anticorrupción Interna</div><div class="norm-pct npct-a">54%</div></div>
+        <div class="norm-row"><div class="norm-dot nd-g"></div><div class="norm-name">CMF Circular 3-716</div><div class="norm-pct npct-g">91%</div></div>
+      </div>
+      <div id="t2-c" style="margin-top:4px">
+        <button class="lf-ai-btn">Explicar mi estado de cumplimiento</button>
+      </div>
+    </div>
+  </div>
+  <div class="tour-panel" id="t2-panel">
+    <div class="panel-head">
+      <div class="panel-head-row"><div class="panel-head-title">✦ ELM · Exposición moderada</div><button class="panel-close" onclick="closeTour(2)">✕</button></div>
+      <div class="panel-head-sub">2 focos requieren acción esta semana</div>
+    </div>
+    <div class="panel-body">
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Ley 21.719 — Acción urgente esta semana</div></div><div class="p-item-body">Control de tratamiento de datos lleva <strong>18 días vencido</strong>. Mario Vega (responsable) tiene 11 tareas activas en paralelo. Reasignación recomendada para evitar observación en auditoría.</div><div class="p-action">🔄 Reasignar control</div></div>
+      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">CMF 3-720 — Arrancar en 2 semanas</div></div><div class="p-item-body">Plazo regulatorio es junio — no es urgente esta semana. Pero el avance 0% → 31% es engañoso: solo 1 control fue completado, los otros 3 están bloqueados por aprobación de TI.</div><div class="p-action">📌 Ver bloqueo</div></div>
+      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Anticorrupción — 1 hito bloqueado</div></div><div class="p-item-body">Avance bueno (54%) pero parado hace 9 días. El hito "Aprobación Gerencia General" no tiene responsable asignado desde el cambio de Gerente.</div><div class="p-action">👤 Asignar responsable</div></div>
+      <div class="p-item" style="border-color:#bbf7d0;background:#f0fdf4"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">ISO 27001 — Sin urgencia (plazo junio)</div></div><div class="p-item-body"><span class="pg">Sin acción requerida esta semana.</span> Programar kickoff para el lunes siguiente.</div></div>
+    </div>
+    <div class="panel-footer"><input class="panel-input" placeholder="¿Qué le muestro al directorio esta semana?"/><button class="panel-send">↑</button></div>
+  </div>
+  <div class="tour-tip" id="t2-tip">
+    <div class="tip-badge" id="t2-badge">PASO 1 DE 4</div>
+    <h3 class="tip-title" id="t2-title"></h3>
+    <p class="tip-body" id="t2-body"></p>
+    <div class="tip-nav"><div class="tip-dots" id="t2-dots"></div><button class="tip-skip" onclick="closeTour(2)">Saltar</button><button class="tip-next" id="t2-next" onclick="tourNext(2)">Siguiente →</button></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+  TOUR 3: Nueva ley
+════════════════════════════════════════ -->
+<div class="tour-modal" id="tour3">
+  <button class="tour-x" onclick="closeTour(3)">✕</button>
+  <div class="sp" id="t3-st"></div><div class="sp" id="t3-sl"></div><div class="sp" id="t3-sr"></div><div class="sp" id="t3-sb"></div>
+  <div class="sp-ring" id="t3-ring" style="display:none"></div>
+  <div class="tour-app">
+    <div class="lf-nav">
+      <div class="lf-logo"><span>🍋</span><span class="lf-lm">Lemon</span><span class="lf-fl">Flow</span></div>
+      <span class="lf-ni on">Cumplimiento</span><span class="lf-ni">Contratos</span><span class="lf-ni">Riesgos</span>
+      <div class="lf-sp"></div><div class="lf-av">R</div>
+    </div>
+    <div class="lf-page">
+      <div class="lf-ptitle">Normativas</div>
+      <div id="t3-a" class="lf-warn">🔔 <strong>Nueva normativa detectada:</strong> CMF Circular 3-724 — Ciberseguridad Financiera · Publicada 18/03/2026 · Vigente desde 01/07/2026</div>
+      <div id="t3-b" class="lf-card">
+        <div class="lf-card-title">Contexto del sistema (sin análisis)</div>
+        <div class="lf-row" style="margin-bottom:0">
+          <div class="lf-stat"><div class="lf-stat-n">47</div><div class="lf-stat-l">Contratos vigentes</div></div>
+          <div class="lf-stat"><div class="lf-stat-n">12</div><div class="lf-stat-l">Políticas activas</div></div>
+          <div class="lf-stat"><div class="lf-stat-n">8</div><div class="lf-stat-l">Programas de control</div></div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:#9ca3af">¿Cuáles de estos se ven afectados por la nueva normativa? El sistema no lo sabe todavía.</div>
+      </div>
+      <div id="t3-c" style="margin-top:4px">
+        <button class="lf-ai-btn">Evaluar impacto cross-módulo con ELM</button>
+      </div>
+    </div>
+  </div>
+  <div class="tour-panel" id="t3-panel">
+    <div class="panel-head">
+      <div class="panel-head-row"><div class="panel-head-title">✦ ELM · Impacto CMF 3-724</div><button class="panel-close" onclick="closeTour(3)">✕</button></div>
+      <div class="panel-head-sub">3 contratos · 2 políticas · 4 controles nuevos</div>
+    </div>
+    <div class="panel-body">
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">3 contratos requieren nueva cláusula</div></div><div class="p-item-body">AWS, Azure y Softlayer no tienen cláusula de notificación de incidentes en <strong>72hs</strong> (exigida por la circular). Necesitan addendum antes de julio.</div><div class="p-action">📝 Ver contratos</div></div>
+      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Política de Ciberseguridad — actualizar</div></div><div class="p-item-body">Sección de gestión de accesos privilegiados no contempla los nuevos requisitos de monitoreo continuo.</div><div class="p-action">✏️ Actualizar política</div></div>
+      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Política de Proveedores TI — actualizar</div></div><div class="p-item-body">Debe incluir requisito de auditoría de seguridad para proveedores cloud bajo la nueva circular.</div><div class="p-action">✏️ Actualizar política</div></div>
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">4 controles de ciberseguridad — crear</div></div><div class="p-item-body">No existen controles formales para monitoreo de accesos, gestión de incidentes críticos, reporte a CMF y continuidad operacional. <strong>Plazo: antes del 01/07/2026.</strong></div><div class="p-action">➕ Crear controles</div></div>
+    </div>
+    <div class="panel-footer"><input class="panel-input" placeholder="¿Qué pasa si no cumplimos antes de julio?"/><button class="panel-send">↑</button></div>
+  </div>
+  <div class="tour-tip" id="t3-tip">
+    <div class="tip-badge" id="t3-badge">PASO 1 DE 4</div>
+    <h3 class="tip-title" id="t3-title"></h3>
+    <p class="tip-body" id="t3-body"></p>
+    <div class="tip-nav"><div class="tip-dots" id="t3-dots"></div><button class="tip-skip" onclick="closeTour(3)">Saltar</button><button class="tip-next" id="t3-next" onclick="tourNext(3)">Siguiente →</button></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+  TOUR 4: Análisis de contrato
+════════════════════════════════════════ -->
+<div class="tour-modal" id="tour4">
+  <button class="tour-x" onclick="closeTour(4)">✕</button>
+  <div class="sp" id="t4-st"></div><div class="sp" id="t4-sl"></div><div class="sp" id="t4-sr"></div><div class="sp" id="t4-sb"></div>
+  <div class="sp-ring" id="t4-ring" style="display:none"></div>
+  <div class="tour-app">
+    <div class="lf-nav">
+      <div class="lf-logo"><span>🍋</span><span class="lf-lm">Lemon</span><span class="lf-fl">Flow</span></div>
+      <span class="lf-ni on">Contratos</span><span class="lf-ni">Cumplimiento</span>
+      <div class="lf-sp"></div><div class="lf-av">R</div>
+    </div>
+    <div class="lf-page">
+      <div class="lf-back">← Contratos</div>
+      <div class="lf-ptitle">Contrato de Outsourcing IT — Proveedor Global S.A. <span class="lf-badge b-amber">En revisión</span></div>
+      <div class="lf-sub">Cargado hace 2 horas · 68 páginas · Valor: UF 8.200 / año</div>
+      <div id="t4-a" class="lf-card">
+        <div class="lf-card-title">Estado del documento</div>
+        <div class="lf-field"><label>Archivo</label><div class="lf-field-val">📄 Outsourcing_IT_ProvedorGlobal_v3.pdf</div></div>
+        <div class="lf-field"><label>Páginas</label><div class="lf-field-val">68 páginas · 42.800 palabras</div></div>
+        <div class="lf-field"><label>Tipo de contrato</label><div class="lf-field-val">Servicios tecnológicos con acceso a datos</div></div>
+      </div>
+      <div id="t4-b" class="lf-card">
+        <div class="lf-card-title">Revisión de riesgos</div>
+        <div class="lf-field"><label>Revisión humana (Legal)</label><div class="lf-field-val" style="color:#d97706;font-weight:600">⏳ Pendiente · Estimado: 2–3 días hábiles</div></div>
+        <div class="lf-field"><label>Análisis de riesgos automatizado</label><div class="lf-field-val" style="color:#9ca3af">Sin iniciar</div></div>
+        <div class="lf-field"><label>Cláusulas críticas identificadas</label><div class="lf-field-val" style="color:#9ca3af">—</div></div>
+      </div>
+      <div id="t4-c" style="margin-top:4px">
+        <button class="lf-ai-btn">Analizar riesgos con ELM</button>
+      </div>
+    </div>
+  </div>
+  <div class="tour-panel" id="t4-panel">
+    <div class="panel-head">
+      <div class="panel-head-row"><div class="panel-head-title">✦ ELM · 8 riesgos identificados</div><button class="panel-close" onclick="closeTour(4)">✕</button></div>
+      <div class="panel-head-sub">2 críticos bloquean la firma · Revisado en 12 segundos</div>
+    </div>
+    <div class="panel-body">
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Art. 14 — Responsabilidad ilimitada</div></div><div class="p-item-body">Sin tope contractual. En caso de incidente grave, la exposición económica es <strong>ilimitada</strong>. Negociar tope de 12 meses de fees.</div><div class="p-action">⚠ Negociar antes de firmar</div></div>
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Art. 22 — Multa automática sin período de cura</div></div><div class="p-item-body">Cualquier incumplimiento activa multa inmediata, <strong>sin 30 días para corregir</strong>. Estándar de mercado es 30 días de cura.</div><div class="p-action">⚠ Negociar antes de firmar</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Art. 31 — Sin portabilidad de datos</div></div><div class="p-item-body">Al terminar el contrato, no hay obligación de devolver ni eliminar datos. Riesgo alto bajo Ley 21.719.</div><div class="p-action">📝 Agregar cláusula</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Art. 38 — Renovación automática (30 días)</div></div><div class="p-item-body">Ventana de aviso muy corta para contrato de esta magnitud. Estándar recomendado: 90 días.</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Art. 45 — Subcontratación sin restricción</div></div><div class="p-item-body">Proveedor puede subcontratar sin notificación. Agregar lista de subcontratistas aprobados.</div></div>
+    </div>
+    <div class="panel-footer"><input class="panel-input" placeholder="¿Cómo negocio el Art. 14?"/><button class="panel-send">↑</button></div>
+  </div>
+  <div class="tour-tip" id="t4-tip">
+    <div class="tip-badge" id="t4-badge">PASO 1 DE 4</div>
+    <h3 class="tip-title" id="t4-title"></h3>
+    <p class="tip-body" id="t4-body"></p>
+    <div class="tip-nav"><div class="tip-dots" id="t4-dots"></div><button class="tip-skip" onclick="closeTour(4)">Saltar</button><button class="tip-next" id="t4-next" onclick="tourNext(4)">Siguiente →</button></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+  TOUR 5: Deadline Agent
+════════════════════════════════════════ -->
+<div class="tour-modal" id="tour5">
+  <button class="tour-x" onclick="closeTour(5)">✕</button>
+  <div class="sp" id="t5-st"></div><div class="sp" id="t5-sl"></div><div class="sp" id="t5-sr"></div><div class="sp" id="t5-sb"></div>
+  <div class="sp-ring" id="t5-ring" style="display:none"></div>
+  <div class="tour-app">
+    <div class="lf-nav">
+      <div class="lf-logo"><span>🍋</span><span class="lf-lm">Lemon</span><span class="lf-fl">Flow</span></div>
+      <span class="lf-ni on">Inicio</span><span class="lf-ni">Contratos</span><span class="lf-ni">Cumplimiento</span>
+      <div class="lf-sp"></div><div class="lf-av">R</div>
+    </div>
+    <div class="lf-page">
+      <div class="lf-ptitle">Dashboard — Empresa Chile 2</div>
+      <div id="t5-a" class="lf-card">
+        <div class="lf-card-title">Próximos vencimientos (esta semana)</div>
+        <table class="lf-table">
+          <thead><tr><th>Elemento</th><th>Módulo</th><th>Vence</th><th>Responsable</th><th>Alerta</th></tr></thead>
+          <tbody>
+            <tr><td class="lf-link">Informe KPIs — Retail S.A.</td><td><span class="lf-chip">Contratos</span></td><td style="color:#dc2626;font-weight:700">Mañana</td><td>Carmen López</td><td style="color:#9ca3af">—</td></tr>
+            <tr><td class="lf-link">Control Ley 21.719</td><td><span class="lf-chip">Cumplimiento</span></td><td style="color:#dc2626;font-weight:700">Jueves</td><td>Mario Vega</td><td style="color:#9ca3af">—</td></tr>
+            <tr><td class="lf-link">Reporte CMF Q1 2026</td><td><span class="lf-chip">Regulatorio</span></td><td style="color:#d97706;font-weight:700">Viernes</td><td>Ana Martínez</td><td style="color:#9ca3af">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="t5-b" class="lf-danger">⚠ <strong>3 vencimientos críticos esta semana — ningún responsable fue alertado todavía.</strong> El sistema registra las fechas, pero no hace nada al respecto.</div>
+      <div id="t5-c" style="margin-top:4px">
+        <button class="lf-ai-btn">Activar Deadline Agent</button>
+      </div>
+    </div>
+  </div>
+  <div class="tour-panel" id="t5-panel">
+    <div class="panel-head">
+      <div class="panel-head-row"><div class="panel-head-title">✦ Deadline Agent · Activo</div><button class="panel-close" onclick="closeTour(5)">✕</button></div>
+      <div class="panel-head-sub">3 responsables alertados · Escalación programada</div>
+    </div>
+    <div class="panel-body">
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Carmen López — Informe KPIs · Vence mañana</div></div><div class="p-item-body">Alerta enviada hace 2 min. Última actividad: hace 6 días. <strong>Si no hay respuesta en 4hs, escala a Legal Manager.</strong></div><div class="p-action">📨 Alerta enviada</div></div>
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Mario Vega — Control Ley 21.719 · Jueves</div></div><div class="p-item-body">Alerta enviada. Última actividad: hace 18 días — riesgo alto de no respuesta. <strong>Escalación a Compliance Manager en 2hs.</strong></div><div class="p-action">📨 Alerta enviada</div></div>
+      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Ana Martínez — Reporte CMF Q1 · Viernes</div></div><div class="p-item-body">Alerta enviada. Actividad reciente registrada. <span class="pg">Bajo riesgo de no cumplir.</span> Recordatorio el jueves si no hay avance.</div><div class="p-action">📨 Alerta enviada</div></div>
+      <div class="p-item" style="border-color:#bbf7d0;background:#f0fdf4"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">Monitoreo activo — 47 contratos + 312 tareas</div></div><div class="p-item-body"><span class="pg">El agente corre en segundo plano.</span> Próximo escaneo: en 6 horas. Detectará cualquier vencimiento nuevo que no tenga alerta configurada.</div></div>
+    </div>
+    <div class="panel-footer"><input class="panel-input" placeholder="¿Qué pasa si Mario no responde?"/><button class="panel-send">↑</button></div>
+  </div>
+  <div class="tour-tip" id="t5-tip">
+    <div class="tip-badge" id="t5-badge">PASO 1 DE 4</div>
+    <h3 class="tip-title" id="t5-title"></h3>
+    <p class="tip-body" id="t5-body"></p>
+    <div class="tip-nav"><div class="tip-dots" id="t5-dots"></div><button class="tip-skip" onclick="closeTour(5)">Saltar</button><button class="tip-next" id="t5-next" onclick="tourNext(5)">Siguiente →</button></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+  TOUR 6: Centro de control
+════════════════════════════════════════ -->
+<div class="tour-modal" id="tour6">
+  <button class="tour-x" onclick="closeTour(6)">✕</button>
+  <div class="sp" id="t6-st"></div><div class="sp" id="t6-sl"></div><div class="sp" id="t6-sr"></div><div class="sp" id="t6-sb"></div>
+  <div class="sp-ring" id="t6-ring" style="display:none"></div>
+  <div class="tour-app">
+    <div class="lf-nav">
+      <div class="lf-logo"><span>🍋</span><span class="lf-lm">Lemon</span><span class="lf-fl">Flow</span></div>
+      <span class="lf-ni on">Inicio</span><span class="lf-ni">Contratos</span><span class="lf-ni">Cumplimiento</span><span class="lf-ni">Riesgos</span>
+      <div class="lf-sp"></div><div class="lf-av">R</div>
+    </div>
+    <div class="lf-page">
+      <div class="lf-ptitle">Dashboard General — Empresa Chile 2</div>
+      <div id="t6-a" class="lf-row">
+        <div class="lf-stat"><div class="lf-stat-n amber">47</div><div class="lf-stat-l">Contratos vigentes</div></div>
+        <div class="lf-stat"><div class="lf-stat-n red">3</div><div class="lf-stat-l">Normativas en rojo</div></div>
+        <div class="lf-stat"><div class="lf-stat-n amber">7</div><div class="lf-stat-l">Riesgos activos</div></div>
+        <div class="lf-stat"><div class="lf-stat-n red">2</div><div class="lf-stat-l">Incidentes abiertos</div></div>
+      </div>
+      <div id="t6-b" class="lf-card">
+        <div class="lf-card-title">Estado por módulo</div>
+        <div class="norm-row"><div class="norm-dot nd-a"></div><div class="norm-name">Contratos</div><div class="norm-pct npct-a">47 vigentes · 6 sin trackear</div></div>
+        <div class="norm-row"><div class="norm-dot nd-r"></div><div class="norm-name">Cumplimiento</div><div class="norm-pct npct-r">3 normativas en rojo · 14 tareas vencidas</div></div>
+        <div class="norm-row"><div class="norm-dot nd-a"></div><div class="norm-name">Riesgos</div><div class="norm-pct npct-a">7 activos · 2 sin tratamiento</div></div>
+        <div class="norm-row"><div class="norm-dot nd-r"></div><div class="norm-name">Incidentes</div><div class="norm-pct npct-r">2 abiertos · 1 sin responsable</div></div>
+        <div style="margin-top:12px;font-size:12px;color:#9ca3af">Datos fragmentados. Ningún módulo habla con el otro. ¿Cuál es la exposición real?</div>
+      </div>
+      <div id="t6-c" style="margin-top:4px">
+        <button class="lf-ai-btn">Generar vista ejecutiva con ELM</button>
+      </div>
+    </div>
+  </div>
+  <div class="tour-panel" id="t6-panel">
+    <div class="panel-head">
+      <div class="panel-head-row"><div class="panel-head-title">✦ ELM · Centro de Control</div><button class="panel-close" onclick="closeTour(6)">✕</button></div>
+      <div class="panel-head-sub">Exposición moderada · 1 foco crítico esta semana</div>
+    </div>
+    <div class="panel-body">
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">⚡ Foco crítico — Ley 21.719 + Incidente #14</div></div><div class="p-item-body">El incidente #14 (posible brecha de datos) está abierto sin responsable. Combinado con el control de Ley 21.719 vencido 18 días, esto puede convertirse en una observación regulatoria si hay auditoría esta semana.</div><div class="p-action">🚨 Resolver esta semana</div></div>
+      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">6 contratos sin obligaciones trackeadas</div></div><div class="p-item-body">Firmados en los últimos 60 días. Riesgo latente de incumplimiento contractual sin visibilidad.</div><div class="p-action">📄 Extraer obligaciones</div></div>
+      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">2 riesgos activos sin plan de mitigación</div></div><div class="p-item-body">Riesgo #5 y #9 fueron creados hace 30+ días y no tienen acciones asignadas.</div><div class="p-action">📌 Asignar plan</div></div>
+      <div class="p-item" style="border-color:#bbf7d0;background:#f0fdf4"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">CMF 3-716 · ISO 27001 · Sin urgencia</div></div><div class="p-item-body"><span class="pg">Ambas dentro de plazo.</span> Sin acción requerida esta semana.</div></div>
+    </div>
+    <div class="panel-footer"><input class="panel-input" placeholder="Preparar resumen para el directorio..."/><button class="panel-send">↑</button></div>
+  </div>
+  <div class="tour-tip" id="t6-tip">
+    <div class="tip-badge" id="t6-badge">PASO 1 DE 4</div>
+    <h3 class="tip-title" id="t6-title"></h3>
+    <p class="tip-body" id="t6-body"></p>
+    <div class="tip-nav"><div class="tip-dots" id="t6-dots"></div><button class="tip-skip" onclick="closeTour(6)">Saltar</button><button class="tip-next" id="t6-next" onclick="tourNext(6)">Siguiente →</button></div>
+  </div>
+</div>
+
+
+<script>
+// ─── Tour data ───────────────────────────────────────────────
+const TOURS = {
+  1: { steps:[
+    {el:'t1-a', title:'El contrato está firmado. Pero...', body:'<strong>Acuerdo Marco con Retail S.A.</strong> — firmado hace 4 días, UF 3.400 al año. El sistema lo registró correctamente.'},
+    {el:'t1-b', title:'Cero obligaciones trackeadas.', body:'Ese contrato tiene <span class="td">6 obligaciones activas</span> — reportes, plazos, renovaciones. Ninguna está en el sistema. Si no se cumplen, el incumplimiento llega <span class="td">sin aviso.</span>'},
+    {el:'t1-c', title:'ELM lee el contrato por vos.', body:'Un click. ELM analiza todas las cláusulas, extrae cada obligación e identifica plazos y responsables — <span class="tp">sin que tengas que hacerlo manualmente.</span>'},
+    {el:null,   title:'6 obligaciones listas para ejecutar.', body:'ELM extrajo, estructuró y asignó cada obligación. Tu equipo recibe las tareas. El contrato <span class="tg">ya se está ejecutando.</span>', done:true}
+  ], panel:'t1-panel'},
+  2: { steps:[
+    {el:'t2-a', title:'Tenés datos. No tenés respuestas.', body:'3 normativas en rojo, 14 tareas vencidas, 7 riesgos activos. <strong>¿Esto es urgente? ¿Hay que escalar?</strong> El dashboard no lo dice.'},
+    {el:'t2-b', title:'¿Por qué la Ley 21.719 está en 12%?', body:'El sistema muestra el número. Pero no dice si ese 12% es por falta de recursos, por un control bloqueado, o porque <span class="td">nadie lo está mirando desde hace semanas.</span>'},
+    {el:'t2-c', title:'ELM interpreta el estado real.', body:'No un resumen de lo que ya ves. ELM conecta causas con consecuencias: <span class="tp">por qué estás en rojo, qué lo generó y qué acción concreta resuelve el problema esta semana.</span>'},
+    {el:null,   title:'Diagnóstico claro. Acciones concretas.', body:'ELM identificó 2 focos reales, descartó 2 falsos positivos y generó un plan de 3 acciones para esta semana. <span class="tg">Sin consultor externo.</span>', done:true}
+  ], panel:'t2-panel'},
+  3: { steps:[
+    {el:'t3-a', title:'Salió una nueva circular CMF.', body:'CMF Circular 3-724 — Ciberseguridad Financiera. <strong>Publicada el 18/03/2026, vigente desde el 1/07/2026.</strong> Tenés 3 meses para cumplir.'},
+    {el:'t3-b', title:'¿Cuáles de tus 47 contratos se ven afectados?', body:'Tenés contratos, políticas y controles activos. <span class="td">Ninguno sabe todavía que existe esta circular.</span> Descubrirlo manualmente puede tomar días o semanas.'},
+    {el:'t3-c', title:'ELM hace el cruce por vos.', body:'ELM analiza la circular y la cruza con todo el sistema: <span class="tp">qué contratos necesitan addendum, qué políticas deben actualizarse y qué controles hay que crear</span> antes de julio.'},
+    {el:null,   title:'Impacto mapeado en segundos.', body:'3 contratos, 2 políticas, 4 controles nuevos. Todo identificado, priorizado y con tareas asignadas. <span class="tg">La ley bajó a la operación sola.</span>', done:true}
+  ], panel:'t3-panel'},
+  4: { steps:[
+    {el:'t4-a', title:'68 páginas. Cargadas hace 2 horas.', body:'Contrato de Outsourcing IT con Proveedor Global S.A. — <strong>UF 8.200 anuales, servicios con acceso a datos.</strong> Uno de los contratos de mayor riesgo para revisar.'},
+    {el:'t4-b', title:'Revisión legal: 2 a 3 días hábiles.', body:'Ese es el tiempo real que toma una revisión manual de 68 páginas. Durante esos días, <span class="td">nadie sabe si hay cláusulas que bloquean la firma.</span>'},
+    {el:'t4-c', title:'ELM lo revisa en segundos.', body:'ELM lee el contrato completo e identifica cláusulas riesgosas, multas, obligaciones ocultas y brechas regulatorias — <span class="tp">clasificadas por criticidad, listas para negociar.</span>'},
+    {el:null,   title:'8 riesgos. 2 bloquean la firma.', body:'2 riesgos críticos que, si no se negocian, pueden costar millones. ELM los encontró en 12 segundos. <span class="tg">El equipo legal focaliza donde importa.</span>', done:true}
+  ], panel:'t4-panel'},
+  5: { steps:[
+    {el:'t5-a', title:'3 vencimientos críticos esta semana.', body:'Informe de KPIs, un control regulatorio y un reporte CMF. Todos vencen entre mañana y el viernes. <strong>Todos visibles en el sistema.</strong>'},
+    {el:'t5-b', title:'Ningún responsable fue alertado.', body:'El sistema tiene las fechas. Pero <span class="td">no hace nada con ellas.</span> La notificación depende de que alguien entre y lo vea — lo que muchas veces no pasa.'},
+    {el:'t5-c', title:'El Deadline Agent actúa solo.', body:'El agente monitorea todo el sistema en segundo plano. Cuando detecta un vencimiento sin alerta configurada, <span class="tp">notifica al responsable con contexto y escala si no responde.</span>'},
+    {el:null,   title:'3 alertas enviadas. Escalación programada.', body:'Mario Vega tiene 18 días sin actividad — ya está en escalación automática. <span class="tg">El sistema no espera que nadie lo llame.</span>', done:true}
+  ], panel:'t5-panel'},
+  6: { steps:[
+    {el:'t6-a', title:'Números por todos lados.', body:'Contratos, normativas, riesgos, incidentes — todos con sus propios semáforos. <strong>¿Cuál es el estado real de la empresa?</strong> Nadie lo sabe con certeza.'},
+    {el:'t6-b', title:'Cuatro módulos. Cero conexión.', body:'Cada módulo vive en su propio silo. <span class="td">Un incidente puede agravar un riesgo regulatorio que afecta a un contrato clave</span> — y nadie lo ve porque no hay una vista unificada.'},
+    {el:'t6-c', title:'ELM construye la vista ejecutiva.', body:'ELM cruza los cuatro módulos, identifica las conexiones críticas y genera una interpretación del estado global — <span class="tp">con focos priorizados y acciones concretas.</span>'},
+    {el:null,   title:'Una vista. El cuadro completo.',   body:'ELM detectó que el Incidente #14 agrava la Ley 21.719 — algo que ningún módulo por separado podía ver. <span class="tg">Ahora sabés exactamente dónde está el riesgo real.</span>', done:true}
+  ], panel:'t6-panel'}
+};
+
+const tourStep = {};
+
+function openTour(id) {
+  document.getElementById('tour'+id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+  tourStep[id] = 0;
+  renderStep(id);
+}
+
+function closeTour(id) {
+  document.getElementById('tour'+id).classList.remove('open');
+  document.body.style.overflow = '';
+  const p = document.getElementById(TOURS[id].panel);
+  if(p) p.classList.remove('open');
+  clearSpot(id);
+  tourStep[id] = 0;
+}
+
+function tourNext(id) {
+  const steps = TOURS[id].steps;
+  if(tourStep[id] < steps.length - 1) { tourStep[id]++; renderStep(id); }
+  else closeTour(id);
+}
+
+function renderStep(id) {
+  const data = TOURS[id];
+  const s = data.steps[tourStep[id]];
+  const n = tourStep[id];
+  const total = data.steps.length;
+
+  // Panel
+  const panel = document.getElementById(data.panel);
+  if(s.done && panel) {
+    panel.classList.add('open');
+    clearSpot(id);
+  } else {
+    if(panel) panel.classList.remove('open');
+    if(s.el) setSpot(id, s.el); else clearSpot(id);
+  }
+
+  // Tip content
+  document.getElementById('t'+id+'-badge').textContent = 'PASO '+(n+1)+' DE '+total;
+  document.getElementById('t'+id+'-title').textContent = s.title;
+  document.getElementById('t'+id+'-body').innerHTML = s.body;
+
+  // Dots
+  const dotsEl = document.getElementById('t'+id+'-dots');
+  dotsEl.innerHTML = '';
+  for(let i=0;i<total;i++){
+    const d = document.createElement('div');
+    d.className = 'tip-dot'+(i<n?' done':i===n?' active':'');
+    dotsEl.appendChild(d);
+  }
+
+  // Button
+  const btn = document.getElementById('t'+id+'-next');
+  if(s.done) {
+    btn.textContent = 'Entendido ✓';
+    btn.className = 'tip-done';
+    btn.onclick = () => closeTour(id);
+  } else {
+    btn.textContent = 'Siguiente →';
+    btn.className = 'tip-next';
+    btn.onclick = () => tourNext(id);
+  }
+
+  // Position tip
+  positionTip(id, s);
+}
+
+function setSpot(id, elId) {
+  const el = document.getElementById(elId);
+  if(!el) return;
+  const r = el.getBoundingClientRect();
+  const pad = 10;
+  const t=r.top-pad, l=r.left-pad, ri=r.right+pad, b=r.bottom+pad;
+  const W=window.innerWidth, H=window.innerHeight;
+  ['st','sl','sr','sb'].forEach(p=>{document.getElementById('t'+id+'-'+p).style.display='block'});
+  document.getElementById('t'+id+'-st').style.cssText='top:0;left:0;right:0;height:'+t+'px';
+  document.getElementById('t'+id+'-sl').style.cssText='top:'+t+'px;left:0;width:'+l+'px;height:'+(b-t)+'px';
+  document.getElementById('t'+id+'-sr').style.cssText='top:'+t+'px;left:'+ri+'px;right:0;height:'+(b-t)+'px';
+  document.getElementById('t'+id+'-sb').style.cssText='top:'+b+'px;left:0;right:0;bottom:0';
+  const ring=document.getElementById('t'+id+'-ring');
+  ring.style.cssText='top:'+t+'px;left:'+l+'px;width:'+(ri-l)+'px;height:'+(b-t)+'px;display:block';
+}
+
+function clearSpot(id) {
+  ['st','sl','sr','sb'].forEach(p=>{
+    const el=document.getElementById('t'+id+'-'+p);
+    if(el) el.style.cssText='top:0;left:0;right:0;bottom:0;display:none';
+  });
+  const ring=document.getElementById('t'+id+'-ring');
+  if(ring) ring.style.display='none';
+}
+
+function positionTip(id, s) {
+  const tip = document.getElementById('t'+id+'-tip');
+  const TW = 360, pad = 20;
+  const W = window.innerWidth, H = window.innerHeight;
+
+  if(s.done) {
+    // Left side when panel is open
+    tip.style.cssText = 'left:'+pad+'px;top:50%;transform:translateY(-50%)';
+    return;
+  }
+
+  if(!s.el) {
+    tip.style.cssText = 'left:50%;top:50%;transform:translate(-50%,-50%)';
+    return;
+  }
+
+  const r = document.getElementById(s.el).getBoundingClientRect();
+  const pad10 = 20;
+
+  // Try right, then left, then below
+  let left, top;
+  if(r.right + TW + pad10 < W) {
+    left = r.right + pad10;
+    top = Math.min(Math.max(r.top, pad), H - 280);
+  } else if(r.left - TW - pad10 > 0) {
+    left = r.left - TW - pad10;
+    top = Math.min(Math.max(r.top, pad), H - 280);
+  } else {
+    left = Math.max(pad, (W - TW) / 2);
+    top = r.bottom + pad10;
+  }
+  tip.style.cssText = 'left:'+left+'px;top:'+top+'px;transform:none';
+}
+
+// Close on ESC
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') {
+    for(let i=1;i<=6;i++) {
+      if(document.getElementById('tour'+i).classList.contains('open')) closeTour(i);
+    }
+  }
+});
+</script>
+</body>
+</html>
