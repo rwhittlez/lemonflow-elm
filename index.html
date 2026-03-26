@@ -105,7 +105,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
 /* ══════════════════════════════════════════════════════
    TOUR SYSTEM
 ══════════════════════════════════════════════════════ */
-.tour-modal{display:none;position:fixed;inset:0;z-index:500;background:#f3f4f6;overflow:hidden}
+.tour-modal{display:none;position:fixed;inset:0;z-index:500;background:#f3f4f6;overflow:auto}
 .tour-modal.open{display:block}
 .tour-app{position:absolute;inset:0;overflow:auto;background:#f3f4f6}
 .tour-x{position:fixed;top:14px;right:14px;z-index:600;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);color:#374151;border:1px solid #e5e7eb;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
@@ -168,7 +168,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
 .lf-ni.on{background:#7c3aed;color:#fff;font-weight:600}
 .lf-sp{flex:1}
 .lf-av{width:26px;height:26px;border-radius:50%;background:#7c3aed;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.lf-page{padding:20px 24px;max-width:900px;margin:0 auto}
+.lf-page{padding:20px 24px 120px;max-width:900px;margin:0 auto}
 .lf-back{font-size:11px;color:#7c3aed;cursor:default;margin-bottom:12px}
 .lf-ptitle{font-size:20px;font-weight:800;color:#111827;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .lf-sub{font-size:12px;color:#9ca3af;margin-bottom:16px}
@@ -208,6 +208,135 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
 .norm-name{font-size:12px;color:#374151;flex:1}
 .norm-pct{font-size:11px;font-weight:700}
 .npct-r{color:#dc2626}.npct-a{color:#d97706}.npct-g{color:#16a34a}
+
+/* Contract viewer layout (Tour 1) */
+.contract-layout{display:grid;grid-template-columns:220px 1fr;gap:0;min-height:400px;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;background:#fff}
+.contract-sidebar{background:#f9fafb;border-right:1px solid #e5e7eb;padding:16px;display:flex;flex-direction:column;gap:12px}
+.cs-section{display:flex;flex-direction:column;gap:4px}
+.cs-label{font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.5px}
+.cs-value{font-size:13px;color:#374151;font-weight:600}
+.cs-value.cs-danger{color:#dc2626}
+.cs-divider{height:1px;background:#e5e7eb;margin:4px 0}
+.contract-center{padding:20px;display:flex;flex-direction:column;gap:14px}
+.contract-doc{background:#fefefe;border:1px solid #e5e7eb;border-radius:8px;padding:16px 18px;font-size:12px;line-height:1.7;color:#4b5563;font-family:'Georgia',serif;max-height:280px;overflow-y:auto}
+.contract-doc .clause-title{font-weight:700;color:#1f2937;margin-top:12px;font-family:-apple-system,sans-serif;font-size:12px}
+.contract-doc .clause-title:first-child{margin-top:0}
+.clause-hl{background:rgba(124,58,237,.12);border-left:3px solid var(--purple);padding:4px 8px;margin:4px 0;border-radius:0 4px 4px 0}
+.contract-doc .clause-meta{display:inline-flex;align-items:center;gap:4px;background:#ede9fe;color:#7c3aed;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;font-family:-apple-system,sans-serif;margin-left:4px}
+
+/* Task table for Tour 5 */
+.task-table-wrap{border:1px solid #e5e7eb;border-radius:8px;overflow:hidden}
+.task-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid #f3f4f6;font-size:13px;color:#374151;transition:background .3s}
+.task-row:last-child{border-bottom:none}
+.task-row .tr-name{flex:1;font-weight:600}
+.task-row .tr-module{font-size:11px;background:#f3f4f6;padding:2px 8px;border-radius:4px;color:#6b7280}
+.task-row .tr-date{font-size:12px;font-weight:700;min-width:70px}
+.task-row .tr-date.overdue{color:#dc2626}
+.task-row .tr-date.warning{color:#d97706}
+.task-row .tr-owner{font-size:12px;color:#6b7280;min-width:100px}
+.task-row .tr-status{font-size:11px;min-width:60px;text-align:center}
+.task-row .tr-status.st-ok{color:#9ca3af}
+.risk-detected .task-row{background:#fef2f2;border-left:3px solid #dc2626}
+.risk-badge{display:inline-flex;align-items:center;gap:4px;background:#fecaca;color:#dc2626;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;animation:pulse-risk 2s infinite}
+@keyframes pulse-risk{0%,100%{opacity:1}50%{opacity:.6}}
+.action-bar{margin-top:12px;padding:14px;background:linear-gradient(135deg,rgba(124,58,237,.06),rgba(45,212,191,.04));border:1px solid rgba(124,58,237,.2);border-radius:10px;display:flex;flex-direction:column;gap:8px}
+.action-bar-title{font-size:12px;font-weight:700;color:#7c3aed;display:flex;align-items:center;gap:6px}
+.action-bar-title::before{content:'✦';font-size:14px}
+.action-bar-items{display:flex;flex-direction:column;gap:6px}
+.action-bar-item{display:flex;align-items:center;gap:8px;font-size:12px;color:#374151;padding:6px 10px;background:#fff;border:1px solid #e5e7eb;border-radius:6px}
+.action-bar-item .abi-icon{font-size:14px}
+.action-bar-item .abi-result{margin-left:auto;font-size:11px;font-weight:600;color:#10b981}
+.context-card{margin-top:10px;padding:14px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px}
+.context-card-title{font-size:12px;font-weight:700;color:#16a34a;margin-bottom:8px}
+.context-card-body{font-size:12px;color:#374151;line-height:1.6}
+.context-card-stat{display:flex;gap:12px;margin-top:8px}
+.ctx-stat{background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:6px 10px;font-size:11px;text-align:center}
+.ctx-stat strong{display:block;font-size:16px;color:#7c3aed}
+
+/* Regulatory impact view (Tour 3) */
+.impact-banner{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(90deg,rgba(124,58,237,.1),rgba(245,158,11,.08));border:1px solid rgba(124,58,237,.3);border-radius:10px;margin-bottom:14px}
+.impact-banner-icon{font-size:22px;flex-shrink:0}
+.impact-banner-text{font-size:13px;color:#374151;line-height:1.5}
+.impact-banner-text strong{color:#7c3aed}
+.impact-banner-badge{margin-left:auto;background:#dc2626;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;white-space:nowrap}
+.impact-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.impact-summary-item{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center}
+.impact-summary-item .isi-number{font-size:24px;font-weight:800;color:#7c3aed}
+.impact-summary-item .isi-label{font-size:11px;color:#6b7280;margin-top:2px}
+.impact-section{border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin-bottom:12px}
+.impact-section-head{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#f9fafb;border-bottom:1px solid #e5e7eb;font-size:13px;font-weight:700;color:#1f2937}
+.impact-section-head .ish-icon{font-size:16px}
+.impact-section-head .ish-count{margin-left:auto;font-size:11px;font-weight:600;color:#dc2626;background:#fecaca;padding:2px 8px;border-radius:4px}
+.impact-row{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid #f3f4f6;font-size:12px;color:#374151;line-height:1.6}
+.impact-row:last-child{border-bottom:none}
+.impact-row .ir-name{font-weight:600;min-width:140px;flex-shrink:0}
+.impact-row .ir-detail{flex:1;color:#6b7280}
+.impact-row .ir-detail strong{color:#374151}
+.impact-row .ir-action{font-size:11px;font-weight:700;color:#7c3aed;white-space:nowrap;cursor:pointer}
+.comparison-block{background:#fefefe;border:1px solid #e5e7eb;border-radius:8px;padding:12px;margin:6px 14px 10px;display:grid;grid-template-columns:1fr auto 1fr;gap:8px;font-size:12px;line-height:1.6}
+.comp-before{background:#fef2f2;padding:8px 10px;border-radius:6px;border-left:3px solid #dc2626}
+.comp-arrow{display:flex;align-items:center;justify-content:center;font-size:18px;color:#7c3aed;font-weight:700}
+.comp-after{background:#f0fdf4;padding:8px 10px;border-radius:6px;border-left:3px solid #10b981}
+.comp-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;display:block}
+.comp-before .comp-label{color:#dc2626}
+.comp-after .comp-label{color:#10b981}
+.execution-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.exec-item{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.exec-item-head{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#1f2937}
+.exec-item-head .ei-icon{font-size:16px}
+.exec-item-body{font-size:11px;color:#6b7280;line-height:1.5}
+.exec-item-status{font-size:11px;font-weight:700;color:#10b981;display:flex;align-items:center;gap:4px}
+.exec-item-status::before{content:'✓';font-weight:800}
+.exec-progress{margin-top:12px;padding:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;display:flex;align-items:center;gap:12px;font-size:12px;color:#374151}
+.exec-progress strong{color:#16a34a}
+.exec-progress-bar{flex:1;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.exec-progress-fill{height:100%;background:linear-gradient(90deg,#10b981,#7c3aed);border-radius:3px;width:75%}
+
+/* Centro de control (Tour 6) */
+.global-status{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:12px;margin-bottom:16px}
+.global-status.gs-red{background:linear-gradient(135deg,rgba(220,38,38,.1),rgba(220,38,38,.05));border:1px solid rgba(220,38,38,.3)}
+.global-status.gs-amber{background:linear-gradient(135deg,rgba(217,119,6,.1),rgba(217,119,6,.05));border:1px solid rgba(217,119,6,.3)}
+.global-status.gs-green{background:linear-gradient(135deg,rgba(22,163,74,.1),rgba(22,163,74,.05));border:1px solid rgba(22,163,74,.3)}
+.gs-indicator{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.gs-red .gs-indicator{background:rgba(220,38,38,.15);color:#dc2626}
+.gs-text{flex:1}
+.gs-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9ca3af;margin-bottom:2px}
+.gs-title{font-size:20px;font-weight:800;color:#1f2937;letter-spacing:-.3px}
+.gs-red .gs-title{color:#dc2626}
+.gs-explain{font-size:12px;color:#6b7280;line-height:1.6;margin-top:4px;padding:8px 10px;background:rgba(124,58,237,.04);border-left:2px solid rgba(124,58,237,.3);border-radius:0 4px 4px 0}
+.gs-explain strong{color:#7c3aed}
+.driver-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.driver-card{background:#fff;border-radius:10px;padding:14px;border:1px solid #e5e7eb;position:relative;overflow:hidden}
+.driver-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.driver-card.dc-red::before{background:#dc2626}
+.driver-card.dc-amber::before{background:#d97706}
+.driver-card.dc-green::before{background:#16a34a}
+.dc-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.dc-icon{font-size:18px}
+.dc-title{font-size:13px;font-weight:700;color:#1f2937;flex:1}
+.dc-status{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px}
+.dc-red .dc-status{background:#fecaca;color:#dc2626}
+.dc-amber .dc-status{background:#fde68a;color:#92400e}
+.dc-green .dc-status{background:#bbf7d0;color:#166534}
+.dc-metrics{display:flex;flex-direction:column;gap:4px}
+.dc-metric{font-size:11px;color:#6b7280;display:flex;align-items:center;gap:6px}
+.dc-metric strong{color:#374151}
+.dc-metric .dm-bad{color:#dc2626;font-weight:700}
+.dc-metric .dm-warn{color:#d97706;font-weight:700}
+.dc-metric .dm-ok{color:#16a34a;font-weight:700}
+.action-list{border:1px solid rgba(124,58,237,.2);border-radius:10px;overflow:hidden}
+.action-list-head{display:flex;align-items:center;gap:8px;padding:10px 14px;background:linear-gradient(135deg,rgba(124,58,237,.06),rgba(45,212,191,.03));border-bottom:1px solid rgba(124,58,237,.15);font-size:13px;font-weight:700;color:#7c3aed}
+.action-list-head::before{content:'✦'}
+.al-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #f3f4f6;font-size:12px;color:#374151;line-height:1.5}
+.al-item:last-child{border-bottom:none}
+.al-priority{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0}
+.al-p1{background:#dc2626}
+.al-p2{background:#d97706}
+.al-p3{background:#3b82f6}
+.al-item .al-text{flex:1}
+.al-item .al-text strong{color:#1f2937}
+.al-item .al-module{font-size:10px;background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#6b7280;white-space:nowrap}
+.al-item .al-go{font-size:11px;font-weight:700;color:#7c3aed;cursor:pointer;white-space:nowrap}
 
 /* Chat UI for tours */
 .lf-chat{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
@@ -341,46 +470,46 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
         <div class="case-footer"><span class="case-milestone">Solicitudes</span><button class="btn-demo" onclick="openTour(2)">Ver demo →</button></div>
       </div>
 
-      <!-- CASO 3: Priorización -->
+      <!-- CASO 3: Priorización proactiva -->
       <div class="case-card">
         <span class="phase-chip pc-ejecucion">Ejecución</span>
         <div class="case-header"><div class="case-icon" style="background:rgba(245,158,11,.1)">⏱️</div></div>
-        <div class="case-title">Todo parece urgente. Nada lo es.</div>
+        <div class="case-title">Todo parece en orden. Hasta que no lo está.</div>
         <ul class="case-bullets">
-          <li>Prioriza tareas automáticamente según riesgo real y criticidad</li>
-          <li>Alerta al responsable y a su jefe cuando hay desviaciones</li>
-          <li>Conecta cada tarea con el riesgo que la origina</li>
+          <li>Detecta tareas que probablemente no se cumplirán a tiempo</li>
+          <li>Aprende de tiempos reales de ejecución</li>
+          <li>Actúa antes: alerta, escala y sugiere acciones</li>
         </ul>
-        <div class="case-result">No gestionas más tareas. Gestionas el riesgo en tiempo real.</div>
-        <div class="case-footer"><span class="case-milestone">Priorización y alertas</span><button class="btn-demo" onclick="openTour(5)">Ver demo →</button></div>
+        <div class="case-result">No reaccionas a atrasos. Los previenes.</div>
+        <div class="case-footer"><span class="case-milestone">Detección proactiva</span><button class="btn-demo" onclick="openTour(5)">Ver demo →</button></div>
       </div>
 
       <!-- CASO 4: Normativa -->
       <div class="case-card">
         <span class="phase-chip pc-control">Control</span>
         <div class="case-header"><div class="case-icon" style="background:rgba(245,158,11,.1)">⚖️</div></div>
-        <div class="case-title">Cambió la ley. Sabes exactamente qué hacer.</div>
+        <div class="case-title">Cambió la ley. Nadie sabe qué hacer con eso.</div>
         <ul class="case-bullets">
-          <li>Seleccionas la nueva normativa y el sistema cruza el impacto contra contratos, procesos y controles</li>
-          <li>Identifica qué ya tienes y qué falta — sin duplicar esfuerzo</li>
-          <li>Genera un plan de implementación con tareas y responsables</li>
+          <li>Detecta qué contratos, políticas y controles se ven afectados</li>
+          <li>Sugiere cambios concretos en cada uno</li>
+          <li>Ejecuta la actualización: contratos, políticas y tareas</li>
         </ul>
-        <div class="case-result">No agregas cumplimiento. Lo integras correctamente.</div>
-        <div class="case-footer"><span class="case-milestone">Cambio normativo</span><button class="btn-demo" onclick="openTour(3)">Ver demo →</button></div>
+        <div class="case-result">No analizas normativas. Adaptas tu operación en minutos.</div>
+        <div class="case-footer"><span class="case-milestone">Adaptación regulatoria</span><button class="btn-demo" onclick="openTour(3)">Ver demo →</button></div>
       </div>
 
       <!-- CASO 5: Centro de control -->
       <div class="case-card">
         <span class="phase-chip pc-control">Control</span>
         <div class="case-header"><div class="case-icon" style="background:rgba(16,185,129,.1)">🧠</div></div>
-        <div class="case-title">Abres el sistema. Ya sabes dónde estás parado.</div>
+        <div class="case-title">Tu estado legal no es claro. Y eso es riesgo.</div>
         <ul class="case-bullets">
-          <li>Al entrar, el sistema ya muestra los riesgos críticos y tareas bloqueadas</li>
-          <li>Cruza contratos, normativas e incidentes — sin que preguntes</li>
-          <li>Sugiere acciones concretas con contexto completo</li>
+          <li>Consolida contratos, normativas y operación en un estado único</li>
+          <li>Te muestra si estás en cumplimiento o en riesgo</li>
+          <li>Te dice exactamente qué hacer para corregirlo</li>
         </ul>
-        <div class="case-result">No armas el cuadro. Lo tienes.</div>
-        <div class="case-footer"><span class="case-milestone">Centro de control</span><button class="btn-demo" onclick="openTour(6)">Ver demo →</button></div>
+        <div class="case-result">No revisas dashboards. Tomas decisiones.</div>
+        <div class="case-footer"><span class="case-milestone">Estado de cumplimiento</span><button class="btn-demo" onclick="openTour(6)">Ver demo →</button></div>
       </div>
 
       <!-- CASO 6: Reportes -->
@@ -443,37 +572,66 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
       <div class="lf-back">← Contratos</div>
       <div class="lf-ptitle">Acuerdo Marco de Servicios — Retail S.A. <span class="lf-badge b-green">Firmado</span></div>
       <div class="lf-sub">Firmado: 20/03/2026 (hace 4 días) · Vigencia: 24 meses · Valor: UF 3.400 / año</div>
-      <div class="lf-row">
-        <div id="t1-a" class="lf-card" style="flex:1">
-          <div class="lf-card-title">Detalles del contrato</div>
-          <div class="lf-field"><label>Contraparte</label><div class="lf-field-val">Retail S.A.</div></div>
-          <div class="lf-field"><label>Responsable interno</label><div class="lf-field-val">Carmen López — Legal</div></div>
-          <div class="lf-field"><label>Materias</label><div class="lf-field-val"><span class="lf-chip">Datos</span> <span class="lf-chip">SLA</span> <span class="lf-chip">Reportes</span></div></div>
+
+      <!-- 3-panel layout: sidebar left + contract center -->
+      <div id="t1-a" class="contract-layout">
+        <!-- LEFT: Metadata sidebar -->
+        <div class="contract-sidebar">
+          <div class="cs-section"><div class="cs-label">Contraparte</div><div class="cs-value">Retail S.A.</div></div>
+          <div class="cs-section"><div class="cs-label">Responsable</div><div class="cs-value">Carmen López</div></div>
+          <div class="cs-section"><div class="cs-label">Vigencia</div><div class="cs-value">24 meses</div></div>
+          <div class="cs-section"><div class="cs-label">Valor</div><div class="cs-value">UF 3.400 / año</div></div>
+          <div class="cs-divider"></div>
+          <div class="cs-section"><div class="cs-label">Materias</div><div class="cs-value"><span class="lf-chip">Datos</span> <span class="lf-chip">SLA</span> <span class="lf-chip">Reportes</span></div></div>
+          <div class="cs-divider"></div>
+          <div class="cs-section"><div class="cs-label">Obligaciones</div><div class="cs-value cs-danger">0 trackeadas</div></div>
+          <div class="cs-section"><div class="cs-label">Tareas</div><div class="cs-value cs-danger">0 creadas</div></div>
+          <div class="cs-section"><div class="cs-label">Próximo vencimiento</div><div class="cs-value" style="color:#9ca3af">Desconocido</div></div>
         </div>
-        <div id="t1-b" class="lf-card" style="flex:1">
-          <div class="lf-card-title">Estado de ejecución</div>
-          <div class="lf-field"><label>Tareas de ejecución</label><div class="lf-field-val" style="color:#dc2626;font-weight:700">0 tareas ●</div></div>
-          <div class="lf-field"><label>Obligaciones trackeadas</label><div class="lf-field-val" style="color:#9ca3af">No analizadas</div></div>
-          <div class="lf-field"><label>Vencimiento próximo</label><div class="lf-field-val" style="color:#9ca3af">Desconocido</div></div>
+        <!-- CENTER: Contract document -->
+        <div class="contract-center">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="font-size:14px;font-weight:700;color:#1f2937">Documento del contrato</div>
+            <div style="font-size:11px;color:#9ca3af">28 páginas · PDF</div>
+          </div>
+          <div id="t1-b" class="contract-doc">
+            <div class="clause-title">CLÁUSULA 5.3 — Cambios de equipo clave</div>
+            El Proveedor deberá notificar por escrito al Cliente cualquier cambio en los miembros del equipo clave dentro de un plazo de <span class="clause-hl">10 días hábiles <span class="clause-meta">⏱ Plazo</span></span> desde que se produzca el cambio.
+
+            <div class="clause-title">CLÁUSULA 6.2 — Revisión de precios</div>
+            Los precios se ajustarán anualmente según la variación del IPC publicado por el INE. El ajuste se aplicará <span class="clause-hl">cada 12 meses <span class="clause-meta">📅 Recurrente</span></span> contados desde la firma.
+
+            <div class="clause-title">CLÁUSULA 8.2 — Informes de gestión</div>
+            El Proveedor entregará un informe mensual de KPIs de servicio al Responsable del Contrato. El plazo de entrega será dentro de <span class="clause-hl">los primeros 5 días hábiles del mes siguiente <span class="clause-meta">⚠ Vence 31/03</span></span>.
+
+            <div class="clause-title">CLÁUSULA 9.1 — Seguros</div>
+            El Proveedor mantendrá vigentes las pólizas de seguro detalladas en el Anexo III y entregará certificados de vigencia <span class="clause-hl">semestralmente <span class="clause-meta">📅 Semestral</span></span>.
+
+            <div class="clause-title">CLÁUSULA 11.4 — Seguridad de datos</div>
+            El Proveedor se someterá a una auditoría de seguridad de datos realizada por un tercero independiente <span class="clause-hl">al menos una vez al año <span class="clause-meta">📅 Anual</span></span>. Los resultados se entregarán al Cliente dentro de 30 días.
+
+            <div class="clause-title">CLÁUSULA 14.1 — Renovación automática</div>
+            El contrato se renovará automáticamente por períodos sucesivos de 12 meses, salvo que cualquiera de las partes notifique su intención de no renovar con al menos <span class="clause-hl">60 días de anticipación <span class="clause-meta">⚠ Alta criticidad</span></span>.
+          </div>
+          <div id="t1-c" style="margin-top:4px">
+            <button class="lf-ai-btn">Extraer obligaciones con ELM</button>
+          </div>
         </div>
-      </div>
-      <div id="t1-c" style="margin-top:4px">
-        <button class="lf-ai-btn">Extraer obligaciones con ELM</button>
       </div>
     </div>
   </div>
   <div class="tour-panel" id="t1-panel">
     <div class="panel-head">
       <div class="panel-head-row"><div class="panel-head-title">✦ ELM · 6 obligaciones encontradas</div><button class="panel-close" onclick="closeTour(1)">✕</button></div>
-      <div class="panel-head-sub">Acuerdo Marco — Retail S.A. · Extraídas automáticamente</div>
+      <div class="panel-head-sub">Acuerdo Marco — Retail S.A. · Extraídas automáticamente del documento</div>
     </div>
     <div class="panel-body">
-      <div class="p-item"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Informe mensual de KPIs</div></div><div class="p-item-body">Cláusula 8.2 · Vence <strong>31/03/2026</strong> · Responsable sugerido: Carmen López</div><div class="p-action">📋 Crear tarea</div></div>
-      <div class="p-item"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Aviso de renovación automática</div></div><div class="p-item-body">Cláusula 14.1 · Vence <strong>20/01/2028</strong> (60 días antes) · Alta criticidad</div><div class="p-action">📋 Crear tarea</div></div>
-      <div class="p-item"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Notificar cambios de equipo clave</div></div><div class="p-item-body">Cláusula 5.3 · Plazo: 10 días hábiles desde cada cambio · RRHH</div><div class="p-action">📋 Crear tarea</div></div>
-      <div class="p-item"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Auditoría de seguridad de datos (anual)</div></div><div class="p-item-body">Cláusula 11.4 · Vence <strong>20/03/2027</strong> · TI + Legal</div><div class="p-action">📋 Crear tarea</div></div>
-      <div class="p-item"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">Certificado de seguros vigentes</div></div><div class="p-item-body">Cláusula 9.1 · Semestral · Próximo: <span class="pg">20/09/2026</span> · Finanzas</div><div class="p-action">📋 Crear tarea</div></div>
-      <div class="p-item"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">Revisión de precios por IPC</div></div><div class="p-item-body">Cláusula 6.2 · Anual · Finanzas</div><div class="p-action">📋 Crear tarea</div></div>
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Informe mensual de KPIs</div></div><div class="p-item-body">Cláusula 8.2 · Vence <strong>31/03/2026</strong> (en 5 días) · Carmen López</div><div class="p-action">📋 Tarea creada → Carmen López</div></div>
+      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Aviso de renovación automática</div></div><div class="p-item-body">Cláusula 14.1 · Aviso antes de <strong>20/01/2028</strong> (60 días) · Alta criticidad</div><div class="p-action">📋 Tarea creada → Legal Manager</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Notificar cambios de equipo clave</div></div><div class="p-item-body">Cláusula 5.3 · 10 días hábiles desde cada cambio · RRHH</div><div class="p-action">📋 Tarea creada → RRHH</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Auditoría de seguridad de datos</div></div><div class="p-item-body">Cláusula 11.4 · Anual · Próxima: <strong>20/03/2027</strong> · TI + Legal</div><div class="p-action">📋 Tarea creada → TI</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">Certificado de seguros vigentes</div></div><div class="p-item-body">Cláusula 9.1 · Semestral · Próximo: <span class="pg">20/09/2026</span></div><div class="p-action">📋 Tarea creada → Finanzas</div></div>
+      <div class="p-item"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">Revisión de precios por IPC</div></div><div class="p-item-body">Cláusula 6.2 · Anual · Finanzas</div><div class="p-action">📋 Tarea creada → Finanzas</div></div>
     </div>
     <div class="panel-footer"><input class="panel-input" placeholder="Preguntale al ELM sobre este contrato..."/><button class="panel-send">↑</button></div>
   </div>
@@ -605,39 +763,149 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
   <div class="tour-app">
     <div class="lf-nav">
       <div class="lf-logo"><span>🍋</span><span class="lf-lm">Lemon</span><span class="lf-fl">Flow</span></div>
-      <span class="lf-ni on">Cumplimiento</span><span class="lf-ni">Contratos</span><span class="lf-ni">Riesgos</span>
+      <span class="lf-ni">Inicio</span><span class="lf-ni on">Cumplimiento</span><span class="lf-ni">Contratos</span><span class="lf-ni">Riesgos</span>
       <div class="lf-sp"></div><div class="lf-av">R</div>
     </div>
     <div class="lf-page">
-      <div class="lf-ptitle">Normativas</div>
-      <div id="t3-a" class="lf-warn">🔔 <strong>Nueva normativa detectada:</strong> CMF Circular 3-724 — Ciberseguridad Financiera · Publicada 18/03/2026 · Vigente desde 01/07/2026</div>
-      <div id="t3-b" class="lf-card">
-        <div class="lf-card-title">Contexto del sistema (sin análisis)</div>
-        <div class="lf-row" style="margin-bottom:0">
-          <div class="lf-stat"><div class="lf-stat-n">47</div><div class="lf-stat-l">Contratos vigentes</div></div>
-          <div class="lf-stat"><div class="lf-stat-n">12</div><div class="lf-stat-l">Políticas activas</div></div>
-          <div class="lf-stat"><div class="lf-stat-n">8</div><div class="lf-stat-l">Programas de control</div></div>
+
+      <!-- STEP 1: Trigger — banner arrives -->
+      <div id="t3-a">
+        <div class="lf-ptitle">Cumplimiento</div>
+        <div class="impact-banner">
+          <div class="impact-banner-icon">⚡</div>
+          <div class="impact-banner-text"><strong>Nueva normativa detectada: CMF Circular 3-724</strong> — Ciberseguridad Financiera<br>Publicada 18/03/2026 · Vigente desde 01/07/2026 · <strong>Impacta tu operación actual.</strong></div>
+          <div class="impact-banner-badge">IMPACTO ALTO</div>
         </div>
-        <div style="margin-top:12px;font-size:12px;color:#9ca3af">¿Cuáles de estos se ven afectados por la nueva normativa? El sistema no lo sabe todavía.</div>
+        <div class="lf-card">
+          <div class="lf-card-title">Tu operación hoy</div>
+          <div class="lf-row" style="margin-bottom:0">
+            <div class="lf-stat"><div class="lf-stat-n">47</div><div class="lf-stat-l">Contratos vigentes</div></div>
+            <div class="lf-stat"><div class="lf-stat-n">12</div><div class="lf-stat-l">Políticas activas</div></div>
+            <div class="lf-stat"><div class="lf-stat-n">8</div><div class="lf-stat-l">Programas de control</div></div>
+          </div>
+          <div style="margin-top:10px;font-size:12px;color:#9ca3af">¿Cuántos de estos se ven afectados? ¿Qué hay que cambiar? Descubrirlo manualmente puede tomar semanas.</div>
+        </div>
       </div>
-      <div id="t3-c" style="margin-top:4px">
-        <button class="lf-ai-btn">Evaluar impacto cross-módulo con ELM</button>
+
+      <!-- STEP 2: Impact view — dedicated analysis screen -->
+      <div id="t3-b" style="display:none">
+        <div class="lf-ptitle">Evaluación de impacto — CMF 3-724</div>
+        <div class="lf-sub">Análisis cross-módulo · Generado automáticamente</div>
+
+        <!-- Summary -->
+        <div class="impact-summary" style="margin-top:14px">
+          <div class="impact-summary-item"><div class="isi-number">3</div><div class="isi-label">Contratos afectados</div></div>
+          <div class="impact-summary-item"><div class="isi-number">2</div><div class="isi-label">Políticas a actualizar</div></div>
+          <div class="impact-summary-item"><div class="isi-number">4</div><div class="isi-label">Controles nuevos</div></div>
+        </div>
+
+        <!-- Contracts impact -->
+        <div class="impact-section">
+          <div class="impact-section-head"><span class="ish-icon">📄</span> Contratos afectados <span class="ish-count">3 requieren addendum</span></div>
+          <div class="impact-row">
+            <div class="ir-name">AWS Cloud Services</div>
+            <div class="ir-detail">Cláusula 4.2 no contempla <strong>notificación de incidentes en 72hs</strong> (exigida por la circular)</div>
+            <div class="ir-action">Ver cambio →</div>
+          </div>
+          <div class="comparison-block">
+            <div class="comp-before"><span class="comp-label">Actual</span>"El proveedor notificará incidentes de seguridad en un plazo razonable."</div>
+            <div class="comp-arrow">→</div>
+            <div class="comp-after"><span class="comp-label">Sugerencia</span>"El proveedor notificará incidentes de seguridad <strong>dentro de 72 horas</strong> conforme CMF 3-724, Art. 5."</div>
+          </div>
+          <div class="impact-row">
+            <div class="ir-name">Azure Enterprise</div>
+            <div class="ir-detail">Sin cláusula de notificación de incidentes. <strong>Requiere addendum.</strong></div>
+            <div class="ir-action">Ver cambio →</div>
+          </div>
+          <div class="impact-row">
+            <div class="ir-name">Softlayer Hosting</div>
+            <div class="ir-detail">Cláusula 7.1 incompleta — falta monitoreo continuo y reporte a CMF.</div>
+            <div class="ir-action">Ver cambio →</div>
+          </div>
+        </div>
+
+        <!-- Policies impact -->
+        <div class="impact-section">
+          <div class="impact-section-head"><span class="ish-icon">📑</span> Políticas a actualizar <span class="ish-count">2 requieren cambios</span></div>
+          <div class="impact-row">
+            <div class="ir-name">Política de Ciberseguridad</div>
+            <div class="ir-detail">Sección de accesos privilegiados no contempla <strong>monitoreo continuo</strong></div>
+            <div class="ir-action">Ver cambio →</div>
+          </div>
+          <div class="impact-row">
+            <div class="ir-name">Política de Proveedores TI</div>
+            <div class="ir-detail">Falta requisito de <strong>auditoría de seguridad para proveedores cloud</strong></div>
+            <div class="ir-action">Ver cambio →</div>
+          </div>
+        </div>
+
+        <!-- Controls impact -->
+        <div class="impact-section">
+          <div class="impact-section-head"><span class="ish-icon">⚙️</span> Controles a crear <span class="ish-count">4 no existen</span></div>
+          <div class="impact-row">
+            <div class="ir-name">Monitoreo de accesos</div>
+            <div class="ir-detail">Control de acceso privilegiado a sistemas críticos — <strong>nuevo</strong></div>
+            <div class="ir-action">Crear →</div>
+          </div>
+          <div class="impact-row">
+            <div class="ir-name">Gestión de incidentes</div>
+            <div class="ir-detail">Protocolo de respuesta y notificación a CMF en 72hs — <strong>nuevo</strong></div>
+            <div class="ir-action">Crear →</div>
+          </div>
+          <div class="impact-row">
+            <div class="ir-name">Reporte regulatorio</div>
+            <div class="ir-detail">Reporte periódico a CMF sobre estado de ciberseguridad — <strong>nuevo</strong></div>
+            <div class="ir-action">Crear →</div>
+          </div>
+          <div class="impact-row">
+            <div class="ir-name">Continuidad operacional</div>
+            <div class="ir-detail">Plan de continuidad ante incidente ciber — <strong>nuevo</strong></div>
+            <div class="ir-action">Crear →</div>
+          </div>
+        </div>
+
+        <button class="lf-ai-btn" style="width:100%;text-align:center;margin-top:4px">Aplicar todos los cambios →</button>
       </div>
+
+      <!-- STEP 3: Execution — changes applied -->
+      <div id="t3-c" style="display:none">
+        <div class="lf-ptitle">Adaptación en ejecución — CMF 3-724</div>
+        <div class="lf-sub">Cambios aplicados automáticamente · 9 acciones ejecutadas</div>
+
+        <div class="execution-grid" style="margin-top:14px">
+          <div class="exec-item">
+            <div class="exec-item-head"><span class="ei-icon">📄</span> Contratos</div>
+            <div class="exec-item-body">3 addendums generados con nueva cláusula de notificación 72hs. Enviados para firma a contrapartes.</div>
+            <div class="exec-item-status">3 addendums enviados para firma</div>
+          </div>
+          <div class="exec-item">
+            <div class="exec-item-head"><span class="ei-icon">📑</span> Políticas</div>
+            <div class="exec-item-body">Política de Ciberseguridad y Proveedores TI actualizadas. Enviadas a 8 colaboradores para revisión y firma.</div>
+            <div class="exec-item-status">2 políticas en firma masiva</div>
+          </div>
+          <div class="exec-item">
+            <div class="exec-item-head"><span class="ei-icon">⚙️</span> Controles</div>
+            <div class="exec-item-body">4 controles de ciberseguridad creados con responsables asignados y fechas de implementación.</div>
+            <div class="exec-item-status">4 controles creados</div>
+          </div>
+          <div class="exec-item">
+            <div class="exec-item-head"><span class="ei-icon">📋</span> Tareas</div>
+            <div class="exec-item-body">12 tareas automáticas creadas. Carmen López, Mario Vega y TI ya tienen asignaciones con plazo antes del 01/07.</div>
+            <div class="exec-item-status">12 tareas asignadas</div>
+          </div>
+        </div>
+
+        <div class="exec-progress">
+          <strong>Avance general: 75%</strong>
+          <div class="exec-progress-bar"><div class="exec-progress-fill"></div></div>
+          Plazo: 01/07/2026
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="tour-panel" id="t3-panel">
-    <div class="panel-head">
-      <div class="panel-head-row"><div class="panel-head-title">✦ ELM · Impacto CMF 3-724</div><button class="panel-close" onclick="closeTour(3)">✕</button></div>
-      <div class="panel-head-sub">3 contratos · 2 políticas · 4 controles nuevos</div>
-    </div>
-    <div class="panel-body">
-      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">3 contratos requieren nueva cláusula</div></div><div class="p-item-body">AWS, Azure y Softlayer no tienen cláusula de notificación de incidentes en <strong>72hs</strong> (exigida por la circular). Necesitan addendum antes de julio.</div><div class="p-action">📝 Ver contratos</div></div>
-      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Política de Ciberseguridad — actualizar</div></div><div class="p-item-body">Sección de gestión de accesos privilegiados no contempla los nuevos requisitos de monitoreo continuo.</div><div class="p-action">✏️ Actualizar política</div></div>
-      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Política de Proveedores TI — actualizar</div></div><div class="p-item-body">Debe incluir requisito de auditoría de seguridad para proveedores cloud bajo la nueva circular.</div><div class="p-action">✏️ Actualizar política</div></div>
-      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">4 controles de ciberseguridad — crear</div></div><div class="p-item-body">No existen controles formales para monitoreo de accesos, gestión de incidentes críticos, reporte a CMF y continuidad operacional. <strong>Plazo: antes del 01/07/2026.</strong></div><div class="p-action">➕ Crear controles</div></div>
-    </div>
-    <div class="panel-footer"><input class="panel-input" placeholder="¿Qué pasa si no cumplimos antes de julio?"/><button class="panel-send">↑</button></div>
-  </div>
+  <!-- No side panel — everything inline in the dedicated view -->
+  <div class="tour-panel" id="t3-panel" style="display:none"></div>
   <div class="tour-tip" id="t3-tip">
     <div class="tip-badge" id="t3-badge">PASO 1 DE 4</div>
     <h3 class="tip-title" id="t3-title"></h3>
@@ -767,37 +1035,61 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
       <div class="lf-sp"></div><div class="lf-av">R</div>
     </div>
     <div class="lf-page">
-      <div class="lf-ptitle">Dashboard — Empresa Chile 2</div>
+      <div class="lf-ptitle">Tareas activas — Empresa Chile 2</div>
+      <div class="lf-sub">Semana del 23/03/2026 · 12 tareas activas · 3 vencen esta semana</div>
+
+      <!-- Step 1: Normal task table — everything looks OK -->
       <div id="t5-a" class="lf-card">
-        <div class="lf-card-title">Próximos vencimientos (esta semana)</div>
-        <table class="lf-table">
-          <thead><tr><th>Elemento</th><th>Módulo</th><th>Vence</th><th>Responsable</th><th>Alerta</th></tr></thead>
-          <tbody>
-            <tr><td class="lf-link">Informe KPIs — Retail S.A.</td><td><span class="lf-chip">Contratos</span></td><td style="color:#dc2626;font-weight:700">Mañana</td><td>Carmen López</td><td style="color:#9ca3af">—</td></tr>
-            <tr><td class="lf-link">Control Ley 21.719</td><td><span class="lf-chip">Cumplimiento</span></td><td style="color:#dc2626;font-weight:700">Jueves</td><td>Mario Vega</td><td style="color:#9ca3af">—</td></tr>
-            <tr><td class="lf-link">Reporte CMF Q1 2026</td><td><span class="lf-chip">Regulatorio</span></td><td style="color:#d97706;font-weight:700">Viernes</td><td>Ana Martínez</td><td style="color:#9ca3af">—</td></tr>
-          </tbody>
-        </table>
+        <div class="lf-card-title">Tareas de la semana</div>
+        <div class="task-table-wrap">
+          <div class="task-row"><div class="tr-name">Informe KPIs — Retail S.A.</div><div class="tr-module">Contratos</div><div class="tr-date warning">Mañana</div><div class="tr-owner">Carmen López</div><div class="tr-status st-ok">—</div></div>
+          <div class="task-row"><div class="tr-name">Control Ley 21.719</div><div class="tr-module">Cumplimiento</div><div class="tr-date warning">Jueves</div><div class="tr-owner">Mario Vega</div><div class="tr-status st-ok">—</div></div>
+          <div class="task-row"><div class="tr-name">Reporte CMF Q1 2026</div><div class="tr-module">Regulatorio</div><div class="tr-date">Viernes</div><div class="tr-owner">Ana Martínez</div><div class="tr-status st-ok">—</div></div>
+          <div class="task-row" style="opacity:.5"><div class="tr-name">Revisión póliza seguros</div><div class="tr-module">Contratos</div><div class="tr-date">Próx. semana</div><div class="tr-owner">Finanzas</div><div class="tr-status st-ok">—</div></div>
+        </div>
+        <div style="margin-top:8px;font-size:11px;color:#9ca3af">Todo parece bajo control. Las fechas están registradas.</div>
       </div>
-      <div id="t5-b" class="lf-danger">⚠ <strong>3 vencimientos críticos esta semana — ningún responsable fue alertado todavía.</strong> El sistema registra las fechas, pero no hace nada al respecto.</div>
-      <div id="t5-c" style="margin-top:4px">
-        <button class="lf-ai-btn">Activar Deadline Agent</button>
+
+      <!-- Step 2: Risk detection — badges appear automatically -->
+      <div id="t5-b" class="lf-card" style="display:none">
+        <div class="lf-card-title">Tareas de la semana <span style="font-size:11px;color:#dc2626;font-weight:700;margin-left:8px">⚡ 2 riesgos detectados</span></div>
+        <div class="task-table-wrap risk-detected">
+          <div class="task-row"><div class="tr-name">Informe KPIs — Retail S.A. <risk-badge class="risk-badge">⚠ 6 días sin actividad</risk-badge></div><div class="tr-module">Contratos</div><div class="tr-date overdue">Mañana</div><div class="tr-owner">Carmen López</div><div class="tr-status st-ok">—</div></div>
+          <div class="task-row"><div class="tr-name">Control Ley 21.719 <risk-badge class="risk-badge">⚠ 18 días sin actividad</risk-badge></div><div class="tr-module">Cumplimiento</div><div class="tr-date overdue">Jueves</div><div class="tr-owner">Mario Vega</div><div class="tr-status st-ok">—</div></div>
+        </div>
+        <div class="task-table-wrap" style="margin-top:6px">
+          <div class="task-row"><div class="tr-name">Reporte CMF Q1 2026</div><div class="tr-module">Regulatorio</div><div class="tr-date">Viernes</div><div class="tr-owner">Ana Martínez</div><div class="tr-status" style="color:#10b981;font-weight:700">✓ Activa</div></div>
+        </div>
+        <div style="margin-top:8px;font-size:12px;color:#dc2626;font-weight:600">El sistema detectó que 2 responsables no han tocado sus tareas. Probabilidad alta de incumplimiento.</div>
       </div>
+
+      <!-- Step 3: Actions taken automatically -->
+      <div id="t5-c" class="action-bar" style="display:none">
+        <div class="action-bar-title">Acciones ejecutadas automáticamente</div>
+        <div class="action-bar-items">
+          <div class="action-bar-item"><span class="abi-icon">📨</span> Alerta enviada a Carmen López con contexto del KPI y plazo <span class="abi-result">Enviado</span></div>
+          <div class="action-bar-item"><span class="abi-icon">🚨</span> Escalación a Legal Manager por Mario Vega (18 días inactivo) <span class="abi-result">Escalado</span></div>
+          <div class="action-bar-item"><span class="abi-icon">📋</span> Recordatorio programado para Ana Martínez el jueves si no hay avance <span class="abi-result">Programado</span></div>
+        </div>
+      </div>
+
+      <!-- Step 4: Context card — intelligence summary -->
+      <div id="t5-d" class="context-card" style="display:none">
+        <div class="context-card-title">✦ Análisis de contexto — Mario Vega</div>
+        <div class="context-card-body">
+          Mario Vega lleva <strong>18 días sin actividad</strong> en la tarea "Control Ley 21.719". Su historial muestra un patrón: las últimas 3 tareas de compliance fueron completadas entre 1 y 3 días <em>después</em> del vencimiento. El sistema ya escaló a Compliance Manager y sugiere reasignar la tarea si no hay respuesta en 4 horas.
+        </div>
+        <div class="context-card-stat">
+          <div class="ctx-stat"><strong>87%</strong>probabilidad de atraso</div>
+          <div class="ctx-stat"><strong>3 de 5</strong>tareas anteriores atrasadas</div>
+          <div class="ctx-stat"><strong>4 hs</strong>para reasignación auto.</div>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="tour-panel" id="t5-panel">
-    <div class="panel-head">
-      <div class="panel-head-row"><div class="panel-head-title">✦ Deadline Agent · Activo</div><button class="panel-close" onclick="closeTour(5)">✕</button></div>
-      <div class="panel-head-sub">3 responsables alertados · Escalación programada</div>
-    </div>
-    <div class="panel-body">
-      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Carmen López — Informe KPIs · Vence mañana</div></div><div class="p-item-body">Alerta enviada hace 2 min. Última actividad: hace 6 días. <strong>Si no hay respuesta en 4hs, escala a Legal Manager.</strong></div><div class="p-action">📨 Alerta enviada</div></div>
-      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">Mario Vega — Control Ley 21.719 · Jueves</div></div><div class="p-item-body">Alerta enviada. Última actividad: hace 18 días — riesgo alto de no respuesta. <strong>Escalación a Compliance Manager en 2hs.</strong></div><div class="p-action">📨 Alerta enviada</div></div>
-      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">Ana Martínez — Reporte CMF Q1 · Viernes</div></div><div class="p-item-body">Alerta enviada. Actividad reciente registrada. <span class="pg">Bajo riesgo de no cumplir.</span> Recordatorio el jueves si no hay avance.</div><div class="p-action">📨 Alerta enviada</div></div>
-      <div class="p-item" style="border-color:#bbf7d0;background:#f0fdf4"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">Monitoreo activo — 47 contratos + 312 tareas</div></div><div class="p-item-body"><span class="pg">El agente corre en segundo plano.</span> Próximo escaneo: en 6 horas. Detectará cualquier vencimiento nuevo que no tenga alerta configurada.</div></div>
-    </div>
-    <div class="panel-footer"><input class="panel-input" placeholder="¿Qué pasa si Mario no responde?"/><button class="panel-send">↑</button></div>
-  </div>
+  <!-- No side panel needed — everything inline -->
+  <div class="tour-panel" id="t5-panel" style="display:none"></div>
   <div class="tour-tip" id="t5-tip">
     <div class="tip-badge" id="t5-badge">PASO 1 DE 4</div>
     <h3 class="tip-title" id="t5-title"></h3>
@@ -821,39 +1113,94 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
       <div class="lf-sp"></div><div class="lf-av">R</div>
     </div>
     <div class="lf-page">
-      <div class="lf-ptitle">Dashboard General — Empresa Chile 2</div>
-      <div id="t6-a" class="lf-row">
-        <div class="lf-stat"><div class="lf-stat-n amber">47</div><div class="lf-stat-l">Contratos vigentes</div></div>
-        <div class="lf-stat"><div class="lf-stat-n red">3</div><div class="lf-stat-l">Normativas en rojo</div></div>
-        <div class="lf-stat"><div class="lf-stat-n amber">7</div><div class="lf-stat-l">Riesgos activos</div></div>
-        <div class="lf-stat"><div class="lf-stat-n red">2</div><div class="lf-stat-l">Incidentes abiertos</div></div>
+      <div class="lf-ptitle">Estado legal — Empresa Chile 2</div>
+      <div class="lf-sub">Actualizado ahora · Lunes 24/03/2026</div>
+
+      <!-- LEVEL 1: Global consolidated status -->
+      <div id="t6-a" class="global-status gs-red">
+        <div class="gs-indicator">🔴</div>
+        <div class="gs-text">
+          <div class="gs-label">Estado general de cumplimiento</div>
+          <div class="gs-title">Riesgo alto — acción requerida</div>
+          <div class="gs-explain"><strong>¿Por qué?</strong> 3 contratos tienen obligaciones vencidas, la Ley 21.719 no ha sido implementada (vencida hace 18 días), y hay un incidente de datos abierto sin responsable. La combinación del incidente con la ley vencida genera <strong>exposición regulatoria directa.</strong></div>
+        </div>
       </div>
-      <div id="t6-b" class="lf-card">
-        <div class="lf-card-title">Estado por módulo</div>
-        <div class="norm-row"><div class="norm-dot nd-a"></div><div class="norm-name">Contratos</div><div class="norm-pct npct-a">47 vigentes · 6 sin trackear</div></div>
-        <div class="norm-row"><div class="norm-dot nd-r"></div><div class="norm-name">Cumplimiento</div><div class="norm-pct npct-r">3 normativas en rojo · 14 tareas vencidas</div></div>
-        <div class="norm-row"><div class="norm-dot nd-a"></div><div class="norm-name">Riesgos</div><div class="norm-pct npct-a">7 activos · 2 sin tratamiento</div></div>
-        <div class="norm-row"><div class="norm-dot nd-r"></div><div class="norm-name">Incidentes</div><div class="norm-pct npct-r">2 abiertos · 1 sin responsable</div></div>
-        <div style="margin-top:12px;font-size:12px;color:#9ca3af">Datos fragmentados. Ningún módulo habla con el otro. ¿Cuál es la exposición real?</div>
+
+      <!-- LEVEL 2: Drivers — why am I in this state -->
+      <div id="t6-b" class="driver-grid">
+        <div class="driver-card dc-red">
+          <div class="dc-head"><span class="dc-icon">📄</span><span class="dc-title">Contratos</span><span class="dc-status">Crítico</span></div>
+          <div class="dc-metrics">
+            <div class="dc-metric"><span class="dm-bad">6</span> contratos sin obligaciones trackeadas</div>
+            <div class="dc-metric"><span class="dm-bad">3</span> con obligaciones vencidas esta semana</div>
+            <div class="dc-metric"><strong>47</strong> contratos vigentes en total</div>
+          </div>
+        </div>
+        <div class="driver-card dc-red">
+          <div class="dc-head"><span class="dc-icon">📑</span><span class="dc-title">Normativa</span><span class="dc-status">Crítico</span></div>
+          <div class="dc-metrics">
+            <div class="dc-metric"><span class="dm-bad">1</span> ley no implementada (Ley 21.719)</div>
+            <div class="dc-metric"><span class="dm-warn">2</span> políticas desactualizadas</div>
+            <div class="dc-metric"><span class="dm-ok">2</span> normativas dentro de plazo</div>
+          </div>
+        </div>
+        <div class="driver-card dc-amber">
+          <div class="dc-head"><span class="dc-icon">⚙️</span><span class="dc-title">Operación</span><span class="dc-status">Atención</span></div>
+          <div class="dc-metrics">
+            <div class="dc-metric"><span class="dm-bad">14</span> tareas vencidas</div>
+            <div class="dc-metric"><span class="dm-warn">3</span> responsables inactivos (+7 días)</div>
+            <div class="dc-metric"><strong>312</strong> tareas activas en total</div>
+          </div>
+        </div>
+        <div class="driver-card dc-red">
+          <div class="dc-head"><span class="dc-icon">🚨</span><span class="dc-title">Incidentes</span><span class="dc-status">Crítico</span></div>
+          <div class="dc-metrics">
+            <div class="dc-metric"><span class="dm-bad">2</span> incidentes abiertos</div>
+            <div class="dc-metric"><span class="dm-bad">1</span> sin responsable asignado (#14)</div>
+            <div class="dc-metric">#14 agrava exposición a Ley 21.719</div>
+          </div>
+        </div>
       </div>
-      <div id="t6-c" style="margin-top:4px">
-        <button class="lf-ai-btn">Generar vista ejecutiva con ELM</button>
+
+      <!-- LEVEL 3: Prioritized actions -->
+      <div id="t6-c" class="action-list">
+        <div class="action-list-head">Qué deberías hacer ahora</div>
+        <div class="al-item">
+          <div class="al-priority al-p1">1</div>
+          <div class="al-text"><strong>Asignar responsable al Incidente #14</strong> — posible brecha de datos, agrava la Ley 21.719 vencida</div>
+          <div class="al-module">Incidentes</div>
+          <div class="al-go">Ir →</div>
+        </div>
+        <div class="al-item">
+          <div class="al-priority al-p1">2</div>
+          <div class="al-text"><strong>Implementar controles Ley 21.719</strong> — vencida hace 18 días, alto riesgo si hay auditoría</div>
+          <div class="al-module">Cumplimiento</div>
+          <div class="al-go">Ir →</div>
+        </div>
+        <div class="al-item">
+          <div class="al-priority al-p2">3</div>
+          <div class="al-text"><strong>Extraer obligaciones de 6 contratos</strong> — firmados hace 60 días, sin visibilidad de compromisos</div>
+          <div class="al-module">Contratos</div>
+          <div class="al-go">Ir →</div>
+        </div>
+        <div class="al-item">
+          <div class="al-priority al-p2">4</div>
+          <div class="al-text"><strong>Actualizar Política de Ciberseguridad</strong> — no contempla monitoreo continuo exigido por CMF 3-724</div>
+          <div class="al-module">Normativa</div>
+          <div class="al-go">Ir →</div>
+        </div>
+        <div class="al-item">
+          <div class="al-priority al-p3">5</div>
+          <div class="al-text"><strong>Resolver 14 tareas vencidas</strong> — 3 responsables llevan +7 días sin actividad</div>
+          <div class="al-module">Operación</div>
+          <div class="al-go">Ir →</div>
+        </div>
       </div>
+
     </div>
   </div>
-  <div class="tour-panel" id="t6-panel">
-    <div class="panel-head">
-      <div class="panel-head-row"><div class="panel-head-title">✦ ELM · Centro de Control</div><button class="panel-close" onclick="closeTour(6)">✕</button></div>
-      <div class="panel-head-sub">Exposición moderada · 1 foco crítico esta semana</div>
-    </div>
-    <div class="panel-body">
-      <div class="p-item" style="border-color:#fecaca;background:#fef2f2"><div class="p-item-h"><div class="p-dot d-red"></div><div class="p-item-title">⚡ Foco crítico — Ley 21.719 + Incidente #14</div></div><div class="p-item-body">El incidente #14 (posible brecha de datos) está abierto sin responsable. Combinado con el control de Ley 21.719 vencido 18 días, esto puede convertirse en una observación regulatoria si hay auditoría esta semana.</div><div class="p-action">🚨 Resolver esta semana</div></div>
-      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">6 contratos sin obligaciones trackeadas</div></div><div class="p-item-body">Firmados en los últimos 60 días. Riesgo latente de incumplimiento contractual sin visibilidad.</div><div class="p-action">📄 Extraer obligaciones</div></div>
-      <div class="p-item" style="border-color:#fde68a;background:#fffbeb"><div class="p-item-h"><div class="p-dot d-amber"></div><div class="p-item-title">2 riesgos activos sin plan de mitigación</div></div><div class="p-item-body">Riesgo #5 y #9 fueron creados hace 30+ días y no tienen acciones asignadas.</div><div class="p-action">📌 Asignar plan</div></div>
-      <div class="p-item" style="border-color:#bbf7d0;background:#f0fdf4"><div class="p-item-h"><div class="p-dot d-green"></div><div class="p-item-title">CMF 3-716 · ISO 27001 · Sin urgencia</div></div><div class="p-item-body"><span class="pg">Ambas dentro de plazo.</span> Sin acción requerida esta semana.</div></div>
-    </div>
-    <div class="panel-footer"><input class="panel-input" placeholder="Preparar resumen para el directorio..."/><button class="panel-send">↑</button></div>
-  </div>
+  <!-- No side panel — everything is inline in the dashboard -->
+  <div class="tour-panel" id="t6-panel" style="display:none"></div>
   <div class="tour-tip" id="t6-tip">
     <div class="tip-badge" id="t6-badge">PASO 1 DE 4</div>
     <h3 class="tip-title" id="t6-title"></h3>
@@ -867,10 +1214,10 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
 // ─── Tour data ───────────────────────────────────────────────
 const TOURS = {
   1: { steps:[
-    {el:'t1-a', title:'El contrato está firmado. Pero...', body:'<strong>Acuerdo Marco con Retail S.A.</strong> — firmado hace 4 días, UF 3.400 al año. El sistema lo registró correctamente.'},
-    {el:'t1-b', title:'Cero obligaciones trackeadas.', body:'Ese contrato tiene <span class="td">6 obligaciones activas</span> — reportes, plazos, renovaciones. Ninguna está en el sistema. Si no se cumplen, el incumplimiento llega <span class="td">sin aviso.</span>'},
-    {el:'t1-c', title:'ELM lee el contrato por vos.', body:'Un click. ELM analiza todas las cláusulas, extrae cada obligación e identifica plazos y responsables — <span class="tp">sin que tengas que hacerlo manualmente.</span>'},
-    {el:null,   title:'6 obligaciones listas para ejecutar.', body:'ELM extrajo, estructuró y asignó cada obligación. Tu equipo recibe las tareas. El contrato <span class="tg">ya se está ejecutando.</span>', done:true}
+    {el:'t1-a', title:'El contrato está firmado. Pero...', body:'<strong>Acuerdo Marco con Retail S.A.</strong> — firmado hace 4 días. A la izquierda, los metadatos: contraparte, valor, responsable. Al centro, el documento. Abajo: <span class="td">0 obligaciones trackeadas, 0 tareas creadas.</span>'},
+    {el:'t1-b', title:'El documento tiene 6 obligaciones escondidas.', body:'Mirá las cláusulas resaltadas en el documento. Plazos, reportes periódicos, auditorías, renovaciones — <span class="td">ninguna está en el sistema.</span> Si no se cumplen, el incumplimiento llega sin aviso.'},
+    {el:'t1-c', title:'Un click. ELM las extrae todas.', body:'ELM analiza el documento cláusula por cláusula, identifica cada obligación con su plazo, frecuencia y responsable sugerido — <span class="tp">sin que nadie lea las 28 páginas.</span>'},
+    {el:null,   title:'6 obligaciones → 6 tareas asignadas.', body:'ELM extrajo, estructuró y asignó cada obligación. Carmen López ya tiene su primera tarea. El contrato <span class="tg">ya se está ejecutando.</span>', done:true}
   ], panel:'t1-panel'},
   2: { steps:[
     {el:'t2-a', title:'Llega un pedido. En lenguaje libre.', body:'Un usuario de Gerencia Comercial escribe lo que necesita — en sus propias palabras. <strong>Sin formularios, sin categorías.</strong> Exactamente como mandaría un mail.', show:['t2-a'], hide:['t2-b','t2-c','t2-d']},
@@ -879,10 +1226,9 @@ const TOURS = {
     {el:'t2-d', title:'Solicitud lista. Sin armar nada.', body:'2 tareas creadas, contrato vinculado, responsable asignado, documentos adjuntos. Y un hallazgo extra: <span class="tg">3 obligaciones vencidas que nadie estaba viendo.</span>', show:['t2-d'], hide:['t2-a','t2-b','t2-c'], done:true}
   ], panel:'t2-panel'},
   3: { steps:[
-    {el:'t3-a', title:'Salió una nueva circular CMF.', body:'CMF Circular 3-724 — Ciberseguridad Financiera. <strong>Publicada el 18/03/2026, vigente desde el 1/07/2026.</strong> Tenés 3 meses para cumplir.'},
-    {el:'t3-b', title:'¿Cuáles de tus 47 contratos se ven afectados?', body:'Tenés contratos, políticas y controles activos. <span class="td">Ninguno sabe todavía que existe esta circular.</span> Descubrirlo manualmente puede tomar días o semanas.'},
-    {el:'t3-c', title:'ELM hace el cruce por vos.', body:'ELM analiza la circular y la cruza con todo el sistema: <span class="tp">qué contratos necesitan addendum, qué políticas deben actualizarse y qué controles hay que crear</span> antes de julio.'},
-    {el:null,   title:'Impacto mapeado en segundos.', body:'3 contratos, 2 políticas, 4 controles nuevos. Todo identificado, priorizado y con tareas asignadas. <span class="tg">La ley bajó a la operación sola.</span>', done:true}
+    {el:'t3-a', title:'Cambió la ley. Tu operación tiene que cambiar con ella.', body:'CMF Circular 3-724 — Ciberseguridad Financiera. Vigente desde julio. El sistema no solo avisa: dice que <span class="td">impacta tu operación actual.</span> 47 contratos, 12 políticas, 8 controles — ¿cuántos se ven afectados?', show:['t3-a'], hide:['t3-b','t3-c']},
+    {el:'t3-b', title:'Vista de impacto. No un panel: una pantalla completa.', body:'El sistema cruzó la normativa contra todo: <span class="tp">3 contratos necesitan addendum, 2 políticas deben actualizarse y 4 controles no existen.</span> Para cada contrato, ves la cláusula actual vs. la sugerencia concreta.', show:['t3-b'], hide:['t3-a','t3-c']},
+    {el:'t3-c', title:'Un botón. Toda la operación se adapta.', body:'Addendums generados y enviados para firma. Políticas actualizadas y en firma masiva. 4 controles creados. 12 tareas asignadas con plazo. <span class="tg">No analizaste la normativa. Adaptaste tu operación en minutos.</span>', show:['t3-c'], hide:['t3-a','t3-b'], done:true}
   ], panel:'t3-panel'},
   4: { steps:[
     {el:'t4-a', title:'Cuatro reportes. Ninguno sirve hoy.', body:'Uno tiene 14 días y está desactualizado. Otro está incompleto. Otro fue armado manualmente en Excel. <strong>Ninguno refleja la realidad de hoy.</strong>', show:['t4-a','t4-b','t4-c'], hide:['t4-d']},
@@ -891,16 +1237,15 @@ const TOURS = {
     {el:'t4-d', title:'Reporte listo. Con gráfico y explicación.', body:'No solo datos: un gráfico de avance por normativa, una <span class="tg">narrativa ejecutiva que explica qué pasó y qué hacer</span>, y evidencia trazable para el auditor. Exporta a PDF, Excel o comparte un link.', show:['t4-d'], hide:['t4-a','t4-b','t4-c'], done:true}
   ], panel:'t4-panel'},
   5: { steps:[
-    {el:'t5-a', title:'3 vencimientos críticos esta semana.', body:'Informe de KPIs, un control regulatorio y un reporte CMF. Todos vencen entre mañana y el viernes. <strong>Todos visibles en el sistema.</strong>'},
-    {el:'t5-b', title:'Ningún responsable fue alertado.', body:'El sistema tiene las fechas. Pero <span class="td">no hace nada con ellas.</span> La notificación depende de que alguien entre y lo vea — lo que muchas veces no pasa.'},
-    {el:'t5-c', title:'El Deadline Agent actúa solo.', body:'El agente monitorea todo el sistema en segundo plano. Cuando detecta un vencimiento sin alerta configurada, <span class="tp">notifica al responsable con contexto y escala si no responde.</span>'},
-    {el:null,   title:'3 alertas enviadas. Escalación programada.', body:'Mario Vega tiene 18 días sin actividad — ya está en escalación automática. <span class="tg">El sistema no espera que nadie lo llame.</span>', done:true}
+    {el:'t5-a', title:'Todo parece en orden.', body:'12 tareas activas, 3 vencen esta semana. Cada una tiene responsable y fecha. <strong>A simple vista, no hay problema.</strong>', show:['t5-a'], hide:['t5-b','t5-c','t5-d']},
+    {el:'t5-b', title:'El sistema detecta lo que tú no ves.', body:'Sin que nadie lo pida, el sistema analizó la actividad real de cada responsable. Resultado: Carmen López lleva <span class="td">6 días sin tocar su tarea</span> y Mario Vega <span class="td">18 días.</span> Ambos con alta probabilidad de incumplir.', show:['t5-b'], hide:['t5-a','t5-c','t5-d']},
+    {el:'t5-c', title:'Alerta, escala y programa. Solo.', body:'El sistema ya envió alertas con contexto, escaló a Mario Vega al Compliance Manager, y programó un recordatorio para Ana Martínez. <span class="tp">Nadie tuvo que pedirlo.</span>', show:['t5-b','t5-c'], hide:['t5-a','t5-d']},
+    {el:'t5-d', title:'Contexto completo. Decisión informada.', body:'Mario tiene un patrón: 3 de sus últimas 5 tareas fueron entregadas tarde. El sistema calcula <span class="td">87% probabilidad de atraso</span> y sugiere reasignar si no hay respuesta en 4 horas. <span class="tg">Inteligencia que actúa antes del problema.</span>', show:['t5-b','t5-c','t5-d'], hide:['t5-a'], done:true}
   ], panel:'t5-panel'},
   6: { steps:[
-    {el:'t6-a', title:'Números por todos lados.', body:'Contratos, normativas, riesgos, incidentes — todos con sus propios semáforos. <strong>¿Cuál es el estado real de la empresa?</strong> Nadie lo sabe con certeza.'},
-    {el:'t6-b', title:'Cuatro módulos. Cero conexión.', body:'Cada módulo vive en su propio silo. <span class="td">Un incidente puede agravar un riesgo regulatorio que afecta a un contrato clave</span> — y nadie lo ve porque no hay una vista unificada.'},
-    {el:'t6-c', title:'ELM construye la vista ejecutiva.', body:'ELM cruza los cuatro módulos, identifica las conexiones críticas y genera una interpretación del estado global — <span class="tp">con focos priorizados y acciones concretas.</span>'},
-    {el:null,   title:'Una vista. El cuadro completo.',   body:'ELM detectó que el Incidente #14 agrava la Ley 21.719 — algo que ningún módulo por separado podía ver. <span class="tg">Ahora sabés exactamente dónde está el riesgo real.</span>', done:true}
+    {el:'t6-a', title:'Entras al sistema. Ya sabes dónde estás parado.', body:'Un solo indicador: <span class="td">Riesgo alto.</span> No 5 métricas sueltas — un estado consolidado. Y abajo, la explicación automática de por qué: obligaciones vencidas, una ley sin implementar y un incidente que agrava todo.', show:['t6-a'], hide:['t6-b','t6-c']},
+    {el:'t6-b', title:'¿Por qué estoy así? Los 4 drivers.', body:'Cada bloque muestra el estado real de un área: contratos, normativa, operación, incidentes. Con números concretos y colores que tienen lógica. <span class="td">No es cosmético — es diagnóstico.</span>', show:['t6-a','t6-b'], hide:['t6-c']},
+    {el:'t6-c', title:'Qué hacer ahora. Priorizado.', body:'No un dashboard para mirar. Una lista de acciones ordenada por urgencia real. Primero el incidente que agrava la ley, después la ley misma, después los contratos sin trackear. <span class="tg">No revisas dashboards. Tomas decisiones.</span>', show:['t6-a','t6-b','t6-c'], done:true}
   ], panel:'t6-panel'}
 };
 
@@ -1007,34 +1352,56 @@ function positionTip(id, s) {
   const tip = document.getElementById('t'+id+'-tip');
   const TW = 360, pad = 20;
   const W = window.innerWidth, H = window.innerHeight;
+  const app = document.querySelector('#tour'+id+' .tour-app');
 
+  // For done steps with a visible panel, position left-center
   if(s.done) {
-    // Left side when panel is open
-    tip.style.cssText = 'left:'+pad+'px;top:50%;transform:translateY(-50%)';
-    return;
+    var panel = document.getElementById(TOURS[id].panel);
+    if(panel && panel.style.display !== 'none') {
+      tip.style.cssText = 'left:'+pad+'px;top:50%;transform:translateY(-50%)';
+      return;
+    }
   }
 
   if(!s.el) {
+    // No target element — center the tip in viewport
     tip.style.cssText = 'left:50%;top:50%;transform:translate(-50%,-50%)';
     return;
   }
 
-  const r = document.getElementById(s.el).getBoundingClientRect();
-  const pad10 = 20;
-
-  // Try right, then left, then below
-  let left, top;
-  if(r.right + TW + pad10 < W) {
-    left = r.right + pad10;
-    top = Math.min(Math.max(r.top, pad), H - 280);
-  } else if(r.left - TW - pad10 > 0) {
-    left = r.left - TW - pad10;
-    top = Math.min(Math.max(r.top, pad), H - 280);
-  } else {
-    left = Math.max(pad, (W - TW) / 2);
-    top = r.bottom + pad10;
+  // Scroll target element into view within the tour-app container
+  var targetEl = document.getElementById(s.el);
+  if(targetEl && app) {
+    targetEl.scrollIntoView({behavior:'smooth', block:'center'});
   }
-  tip.style.cssText = 'left:'+left+'px;top:'+top+'px;transform:none';
+
+  // Small delay to let scroll settle, then position
+  setTimeout(function() {
+    var el = document.getElementById(s.el);
+    if(!el) return;
+    var r = el.getBoundingClientRect();
+    var pad10 = 20;
+    var tipH = tip.offsetHeight || 280;
+
+    // Try right, then left, then bottom-center
+    var left, top;
+    if(r.right + TW + pad10 < W) {
+      left = r.right + pad10;
+      top = Math.min(Math.max(r.top, pad), H - tipH - pad);
+    } else if(r.left - TW - pad10 > 0) {
+      left = r.left - TW - pad10;
+      top = Math.min(Math.max(r.top, pad), H - tipH - pad);
+    } else {
+      // Center horizontally, place below element
+      left = Math.max(pad, (W - TW) / 2);
+      top = r.bottom + pad10;
+      // If that goes off-screen, place above or at bottom of viewport
+      if(top + tipH > H - pad) {
+        top = Math.max(pad, H - tipH - pad);
+      }
+    }
+    tip.style.cssText = 'left:'+left+'px;top:'+top+'px;transform:none';
+  }, 80);
 }
 
 // Close on ESC
